@@ -1,0 +1,102 @@
+body {
+    background-color: #3d3d3d;
+    color: antiquewhite;
+}
+
+.nav {
+    text-align: right;
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 0.5em;
+    box-shadow: 0px 5px rgba(136, 136, 136, 0.5);
+    margin-bottom: 1em;
+}
+
+.nav li {
+    display: inline-block;
+    border-style: groove;
+    border-color: blueviolet;
+    border-width: 0px;
+    border-left-width: 10px;
+}
+
+.nav h1 {
+    font-weight: bold;
+    margin-block-start: 0em;
+}
+
+.navicon {
+    height: 4em;
+    width: auto;
+    float: left;
+}
+
+
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(138, 43, 226,0.6);
+    font-size: small;
+    padding: 0.3em;
+    box-sizing: border-box;
+    padding-bottom: 0.5em;
+}
+
+
+/*MessageBox*/
+.alert {
+    color: black;
+    margin: 20px; 
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px; 
+    border-radius: 5px; 
+    width:300px;
+}
+
+.alert-error{
+    background-color: #f88; 
+}
+
+.alert-info {
+    background-color: rgb(89, 231, 23); 
+}
+
+.alert-warning {
+    background-color: rgb(221, 248, 14); 
+}
+
+
+
+/* Utils */
+.ctr {
+    text-align: center;
+}
+
+.full-ctr-out {
+    position: relative;
+    height: auto;
+    min-height: 200px;
+}
+
+.full-ctr-in {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    height: 100%;
+}
+
+.whitelinks a:link, a:visited, a:hover, a:active {
+    color: antiquewhite;  
+    text-decoration: none;  
+}
+
