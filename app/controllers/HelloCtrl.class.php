@@ -6,7 +6,7 @@ use core\App;
 use core\Message;
 use core\Utils;
 
-class HelloCtrl {
+class HelloCtrl { 
     
     public function action_hello() {//xx
 		        
