@@ -4,14 +4,18 @@
 
     <div class="full-ctr-out">
         <div class="full-ctr-in">
-            <br/><br/>
+            <br /><br />
             <form action="{$conf->app_root}/logCheck" method="post" class="pure-form pure-form-stacked">
                 <legend>Logowanie</legend>
                 <fieldset>
-                    <label for="id_login">login: </label>
-                    <input id="id_login" type="text" name="login" />
-                    <label for="id_pass">pass: </label>
-                    <input id="id_pass" type="password" name="pass" />
+                    <span>
+                        <label for="id_login">login: </label>
+                        <input id="id_login" type="text" name="login" />
+                    </span>
+                    <span>
+                        <label for="id_pass">pass: </label>
+                        <input id="id_pass" type="password" name="pass" />
+                    </span>
                 </fieldset>
                 <input type="submit" value="zaloguj" class="pure-button pure-button-primary" />
             </form>

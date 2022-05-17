@@ -9,9 +9,9 @@ $conf->app_root = '/amelia/public';   # project subfolder in domain (relative to
 # ---- Database config - values required by Medoo
 $conf->db_type = 'mysql';
 $conf->db_server = 'localhost';
-$conf->db_name = '_database_name';
-$conf->db_user = '_user';
-$conf->db_pass = '_password';
+$conf->db_name = 'bibliodb';
+$conf->db_user = 'root';
+$conf->db_pass = '';
 $conf->db_charset = 'utf8';
 
 # ---- Database config - optional values

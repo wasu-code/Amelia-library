@@ -21,13 +21,12 @@ class HelloCtrl {
     }
 
     public function action_elo() {//xx
-		        
-        $variable = 123456;
         
-        App::getMessages()->addMessage(new Message("Aaaaaaaaaaa", Message::INFO));
-        Utils::addInfoMessage(":-)");
-        
-        App::getSmarty()->assign("value",$variable);        
+        Utils::addInfoMessage("Test SELECT");
+
+        $records = App::getDB()->select("user", ["login", "firstName"], ["firstName" => "Dom"]);
+
+        App::getSmarty()->assign("lista",$records);        
         App::getSmarty()->display("Hello.tpl");
         
     }

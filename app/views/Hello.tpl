@@ -1,23 +1,15 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+{extends file='default.tpl'}
 
-<head>
-	<meta charset="utf-8"/>
-	<title>Hello World | Amelia framework</title>
-</head>
+{block name="content"}
+    {include file='messagebox.tpl'}
 
-<body>
-    
-    My value: {$value}
-    
-    {if $msgs->isInfo()}
-        <ul>
-        {foreach $msgs->getMessages() as $msg}
-            <li>{$msg->text}</li>
+    <table cellpadding="5">
+        {foreach $lista as $wiersz}
+            <tr>
+                <td>{$wiersz["login"]}</td>
+                <td>{$wiersz["firstName"]}</td>
+            </tr>
         {/foreach}
-        </ul>
-    {/if}
+    </table>
 
-</body>
-
-</html>
+{/block}
