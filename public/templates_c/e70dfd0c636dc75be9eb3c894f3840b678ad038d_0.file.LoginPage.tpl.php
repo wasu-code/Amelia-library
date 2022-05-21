@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-05-17 12:14:40
+/* Smarty version 4.1.0, created on 2022-05-18 13:46:40
   from 'D:\xampp\htdocs\amelia\app\views\LoginPage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6283759053b048_10087489',
+  'unifunc' => 'content_6284dca003d7d5_29263245',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e70dfd0c636dc75be9eb3c894f3840b678ad038d' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\LoginPage.tpl',
-      1 => 1652782468,
+      1 => 1652874392,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:messagebox.tpl' => 1,
   ),
 ),false)) {
-function content_6283759053b048_10087489 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6284dca003d7d5_29263245 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14995580946283759052e331_00701079', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1366132476284dca0030e82_49984579', "content");
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'default.tpl');
 }
 /* {block "content"} */
-class Block_14995580946283759052e331_00701079 extends Smarty_Internal_Block
+class Block_1366132476284dca0030e82_49984579 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_14995580946283759052e331_00701079',
+    0 => 'Block_1366132476284dca0030e82_49984579',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -53,7 +53,8 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                 <fieldset>
                     <span>
                         <label for="id_login">login: </label>
-                        <input id="id_login" type="text" name="login" />
+                        <input id="id_login" type="text" name="login" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['login']->value ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+" />
                     </span>
                     <span>
                         <label for="id_pass">pass: </label>

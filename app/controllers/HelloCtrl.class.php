@@ -38,6 +38,8 @@ class HelloCtrl {
         
     }
 
+    ////
+
     public function action_homepage() {
         App::getSmarty()->display("HomePage.tpl");
     }

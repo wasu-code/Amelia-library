@@ -11,16 +11,23 @@ App::getRouter()->setLoginRoute('accessdenied'); #action to forward if no permis
 Utils::addRoute('homepage', 'HelloCtrl');
 
 //LOGIN
-Utils::addRoute('login', 'LogCtrl'); #show login page
-Utils::addRoute('logOut', 'LogCtrl');
-Utils::addRoute('accessdenied', 'HelloCtrl');
-Utils::addRoute('loginsuccesful', 'HelloCtrl', ["user","mod","admin"]); #confirmation message
-Utils::addRoute('logCheck', 'LogCtrl'); #perform login from form's data
+Utils::addRoute('login', 'LogCtrl'); #OK //show login page
+Utils::addRoute('logOut', 'LogCtrl'); #OK
+Utils::addRoute('accessdenied', 'HelloCtrl'); #OK
+Utils::addRoute('loginsuccesful', 'HelloCtrl', ["user","mod","admin"]); #OK //confirmation message
+Utils::addRoute('logCheck', 'LogCtrl'); #OK //perform login from form's data
+
+Utils::addRoute('listUsers', 'UsersCtrl',["mod","admin"]); #K
+Utils::addRoute('userEdit', 'UsersCtrl',["mod","admin"]); //display form to enter data
+Utils::addRoute('userAdd', 'UsersCtrl',["mod","admin"]);
+Utils::addRoute('userDelete', 'UsersCtrl',["mod"]);
+Utils::addRoute('userUpdate', 'UsersCtrl',["mod","admin"]);
 
 Utils::addRoute('listBooks', 'BookListCtrl');
 Utils::addRoute('listReserved', 'BookListCtrl', ['mod']);
 
 Utils::addRoute('addBook', 'BookEditCtrl', ['admin']);
+Utils::addRoute('showBookView', 'BookEditCtrl',["mod","admin"]);
 Utils::addRoute('deleteBook', 'BookEditCtrl', ['admin']);
 Utils::addRoute('editBook', 'BookEditCtrl', ['mod','admin']);
 

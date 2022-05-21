@@ -16,9 +16,7 @@ class LogCtrl {
         $this->form = new LoginForm();
     }
 
-
-
-
+    //// akcje
 
     public function action_logOut() {
         session_destroy();
@@ -43,7 +41,7 @@ class LogCtrl {
         $this->generateView();
     }
 
-    ////
+    //// funkcje pomocnicze
 
     public function validate() {
         $this->form->login = ParamUtils::getFromRequest('login');
@@ -66,7 +64,6 @@ class LogCtrl {
             return false;
 
         // sprawdzenie, czy dane logowania poprawne
-        // (takie informacje najczęściej przechowuje się w bazie danych)
         $records = App::getDB()->select("user", ["pass", "role"],["login" => $this->form->login]);
         if (isset($records[0]["pass"])) {
             if ($this->form->pass == $records[0]["pass"]) {//isset
@@ -79,25 +76,12 @@ class LogCtrl {
           Utils::addErrorMessage('Nie znaleziono użytkownika o podanym loginie w bazie');
         }
 
-        /*if ($this->form->login == "admin" && $this->form->pass == "admin") {
-            RoleUtils::addRole('admin');
-            $_SESSION['loggedAs'] = $this->form->login;
-        } else if ($this->form->login == "user" && $this->form->pass == "user") {
-            RoleUtils::addRole('user');
-            $_SESSION['loggedAs'] = $this->form->login;
-        } else if ($this->form->login == "mod" && $this->form->pass == "mod") {
-            RoleUtils::addRole('mod');
-            $_SESSION['loggedAs'] = $this->form->login;
-        } else {
-            Utils::addErrorMessage('Niepoprawny login lub hasło');
-        }*/
-
         return !App::getMessages()->isError();
     }
 
 
     public function generateView() {
-        App::getSmarty()->assign('form', $this->form); // dane formularza do widoku
+        App::getSmarty()->assign('login', $this->form->login); // dane formularza do widoku
         App::getSmarty()->display('LoginPage.tpl');
     }
 

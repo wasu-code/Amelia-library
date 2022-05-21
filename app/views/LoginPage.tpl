@@ -10,7 +10,7 @@
                 <fieldset>
                     <span>
                         <label for="id_login">login: </label>
-                        <input id="id_login" type="text" name="login" />
+                        <input id="id_login" type="text" name="login" value="{$login|default:''}" />
                     </span>
                     <span>
                         <label for="id_pass">pass: </label>

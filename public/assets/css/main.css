@@ -100,3 +100,21 @@ body {
     text-decoration: none;  
 }
 
+.hidden {
+    display:none;
+}
+
+table {
+    background-color:khaki;
+    color: #3d3d3d;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+table td {
+    border: 1px solid black;
+}
+
+table tr:nth-child(even) {
+    background-color: rgb(193, 181, 73);
+}
