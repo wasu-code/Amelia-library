@@ -9,5 +9,12 @@ class PersonEditForm {
     public $registered;
 	public $name;
 	public $surname;
-	public $adress;
+	public $pass;
+	public $addressId;
+
+	public $adr_id;
+    public $city;
+    public $street;
+    public $building;
+	public $apartment;
 }

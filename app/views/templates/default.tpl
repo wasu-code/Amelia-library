@@ -27,7 +27,7 @@
 {block name="content"}ERR: template didn't receive content{/block}
 
 
-
+<div style="height:3em;"></div>
 <div class="footer">
     <hr/>
     {block name="footer"}Default footer{/block}
