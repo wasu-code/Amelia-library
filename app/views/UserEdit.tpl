@@ -13,7 +13,14 @@
             <input  id="login" type="text" placeholder="login" name="login" value="{$form->login|default:''}">
 
             <label for="role">Rola</label>
-            <input  id="role" type="text" placeholder="" name="role" value="{$form->role|default:''}">
+            <!--input  id="role" type="text" placeholder="" name="role" value="{$form->role|default:''}"-->
+
+            <select name="role">
+                <option value="{$form->role|default:''}">{$form->role|default:''}</option>
+				<option value="user">user</option>
+				<option value="mod">mod</option>
+				<option value="admin">admin</option>
+			</select>
 
             <label for="name">Imię</label>
             <input id="name" type="text" placeholder="imię" name="name" value="{$form->name|default:''}">

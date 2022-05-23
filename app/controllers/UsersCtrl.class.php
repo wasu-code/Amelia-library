@@ -202,7 +202,7 @@ class UsersCtrl
         $this->form->city = $v->validateFromPost("city", ['required' => true, 'required_message' => 'Nie podano miasta']);
         $this->form->street = $v->validateFromPost("street", ['required' => true, 'required_message' => 'Nie podano ulicy']);
         $this->form->building = $v->validateFromPost("building", ['required' => true, 'required_message' => 'Nie podano numeru budynku', 'int' => true]);
-        $this->form->apartment = $v->validateFromPost("apartment");
+        $this->form->apartment = $v->validateFromPost("apartment", ['int' => true]);
 
         $this->form->login = $v->validateFromPost("login", ['required' => true, 'required_message' => 'Nie podano loginu']);
         $this->form->role = $v->validateFromPost("role", ['required' => true, 'required_message' => 'Nie podano roli']);

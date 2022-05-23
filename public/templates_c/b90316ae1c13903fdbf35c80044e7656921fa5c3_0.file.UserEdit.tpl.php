@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-05-23 00:18:15
+/* Smarty version 4.1.0, created on 2022-05-23 20:55:13
   from 'D:\xampp\htdocs\amelia\app\views\UserEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_628ab6a7c5c1f9_07584583',
+  'unifunc' => 'content_628bd891893f25_67217301',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b90316ae1c13903fdbf35c80044e7656921fa5c3' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\UserEdit.tpl',
-      1 => 1653257878,
+      1 => 1653332110,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:messagebox.tpl' => 1,
   ),
 ),false)) {
-function content_628ab6a7c5c1f9_07584583 (Smarty_Internal_Template $_smarty_tpl) {
+function content_628bd891893f25_67217301 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_506289595628ab6a7c37285_36768181', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_914479673628bd89186c003_12702316', "content");
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'default.tpl');
 }
 /* {block "content"} */
-class Block_506289595628ab6a7c37285_36768181 extends Smarty_Internal_Block
+class Block_914479673628bd89186c003_12702316 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_506289595628ab6a7c37285_36768181',
+    0 => 'Block_914479673628bd89186c003_12702316',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -56,8 +56,17 @@ if (($_smarty_tpl->tpl_vars['action']->value == 'update')) {?>userEditDB<?php }?
 ">
 
             <label for="role">Rola</label>
-            <input  id="role" type="text" placeholder="" name="role" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['form']->value->role ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
-">
+            <!--input  id="role" type="text" placeholder="" name="role" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['form']->value->role ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+"-->
+
+            <select name="role">
+                <option value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['form']->value->role ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+"><?php echo (($tmp = $_smarty_tpl->tpl_vars['form']->value->role ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+</option>
+				<option value="user">user</option>
+				<option value="mod">mod</option>
+				<option value="admin">admin</option>
+			</select>
 
             <label for="name">Imię</label>
             <input id="name" type="text" placeholder="imię" name="name" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['form']->value->name ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
