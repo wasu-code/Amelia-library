@@ -7,6 +7,7 @@ use core\Utils;
 use core\RoleUtils;
 use core\ParamUtils;
 use app\forms\LoginForm;
+use core\SessionUtils;
 
 class LogCtrl {
     private $form;
@@ -21,7 +22,7 @@ class LogCtrl {
     public function action_logOut() {
         session_destroy();
         Utils::addInfoMessage("Wylogowano poprawnie.");
-        //App::getRouter()->redirectTo("homepage");
+        
         App::getSmarty()->display("HomePage.tpl");
     }
 
@@ -29,11 +30,15 @@ class LogCtrl {
         if ($this->validate()) {
             //zalogowany => przekieruj na główną akcję (z przekazaniem messages przez sesję)
             Utils::addInfoMessage('Poprawnie zalogowano do systemu');
-            //App::getRouter()->redirectTo("homepage");
-            App::getSmarty()->display("HomePage.tpl");//++
+            SessionUtils::storeMessages();
+            App::getRouter()->redirectTo("homepage");
+            //App::getSmarty()->display("HomePage.tpl");//++
         } else {
             //niezalogowany => pozostań na stronie logowania
-            $this->generateView();
+            SessionUtils::storeMessages();
+            //SessionUtils::store('login', $this->form->login);
+            App::getRouter()->redirectTo("login");
+            //$this->generateView();
         }
     }
 

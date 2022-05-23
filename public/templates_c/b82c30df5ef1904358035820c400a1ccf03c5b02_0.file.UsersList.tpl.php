@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-05-21 13:05:28
+/* Smarty version 4.1.0, created on 2022-05-23 12:55:16
   from 'D:\xampp\htdocs\amelia\app\views\UsersList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6288c77887cae7_69311326',
+  'unifunc' => 'content_628b6814564b49_19168986',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b82c30df5ef1904358035820c400a1ccf03c5b02' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\UsersList.tpl',
-      1 => 1653131113,
+      1 => 1653303120,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:messagebox.tpl' => 1,
   ),
 ),false)) {
-function content_6288c77887cae7_69311326 (Smarty_Internal_Template $_smarty_tpl) {
+function content_628b6814564b49_19168986 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11215812516288c7788639d5_35686758', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1467228513628b6814544b36_74897443', "content");
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'default.tpl');
 }
 /* {block "content"} */
-class Block_11215812516288c7788639d5_35686758 extends Smarty_Internal_Block
+class Block_1467228513628b6814544b36_74897443 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_11215812516288c7788639d5_35686758',
+    0 => 'Block_1467228513628b6814544b36_74897443',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -80,6 +80,9 @@ $_smarty_tpl->tpl_vars['wiersz']->do_else = false;
                 <td><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /userEdit/<?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idUser"];?>
 ">Edytuj Dane</a></td>
+                <td><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+/userDelete/<?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idUser"];?>
+">Usuń Użytkownika</a></td>
             </tr>
         <?php
 }

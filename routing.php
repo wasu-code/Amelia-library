@@ -17,12 +17,12 @@ Utils::addRoute('accessdenied', 'HelloCtrl'); #OK
 Utils::addRoute('loginsuccesful', 'HelloCtrl', ["user","mod","admin"]); #OK //confirmation message
 Utils::addRoute('logCheck', 'LogCtrl'); #OK //perform login from form's data
 
-Utils::addRoute('listUsers', 'UsersCtrl',["mod","admin"]); #K
+Utils::addRoute('listUsers', 'UsersCtrl',["mod","admin"]); #K //bez stronicowania
 Utils::addRoute('userEdit', 'UsersCtrl',["mod","admin"]);           //display form to enter data
 Utils::addRoute('userEditDB', 'UsersCtrl',["mod","admin"]);         //commit changes and write data do database
-Utils::addRoute('userAdd', 'UsersCtrl',["mod","admin"]);
-Utils::addRoute('userAddDB', 'UsersCtrl',["mod","admin"]);
-Utils::addRoute('userDelete', 'UsersCtrl',["mod"]);
+Utils::addRoute('userAdd', 'UsersCtrl',["mod","admin"]); #K
+Utils::addRoute('userAddDB', 'UsersCtrl',["mod","admin"]); #K
+Utils::addRoute('userDelete', 'UsersCtrl',["mod"]); #OK
 
 Utils::addRoute('listBooks', 'BookListCtrl');
 Utils::addRoute('listReserved', 'BookListCtrl', ['mod']);

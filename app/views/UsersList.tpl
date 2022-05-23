@@ -23,6 +23,7 @@
                 <td>{$wiersz["lastName"]}</td>
                 <td class="hidden">{$wiersz["Adrdress_idAddress"]}</td>
                 <td><a href="{$conf->app_root}/userEdit/{$wiersz["idUser"]}">Edytuj Dane</a></td>
+                <td><a href="{$conf->app_root}/userDelete/{$wiersz["idUser"]}">Usuń Użytkownika</a></td>
             </tr>
         {/foreach}
     </table>
