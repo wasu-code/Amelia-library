@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-05-23 20:55:13
+/* Smarty version 4.1.0, created on 2022-05-23 21:37:46
   from 'D:\xampp\htdocs\amelia\app\views\UserEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_628bd891893f25_67217301',
+  'unifunc' => 'content_628be28adc2651_19593878',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b90316ae1c13903fdbf35c80044e7656921fa5c3' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\UserEdit.tpl',
-      1 => 1653332110,
+      1 => 1653334664,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:messagebox.tpl' => 1,
   ),
 ),false)) {
-function content_628bd891893f25_67217301 (Smarty_Internal_Template $_smarty_tpl) {
+function content_628be28adc2651_19593878 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_914479673628bd89186c003_12702316', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1751971831628be28ad8adb0_59496082', "content");
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'default.tpl');
 }
 /* {block "content"} */
-class Block_914479673628bd89186c003_12702316 extends Smarty_Internal_Block
+class Block_1751971831628be28ad8adb0_59496082 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_914479673628bd89186c003_12702316',
+    0 => 'Block_1751971831628be28ad8adb0_59496082',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -80,10 +80,12 @@ if (($_smarty_tpl->tpl_vars['action']->value == 'update')) {?>userEditDB<?php }?
             <input id="registered" type="date" placeholder="YYYY-MM-DD" name="registered" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['form']->value->registered ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ">
             
-            <label for="pass">Hasło</label>
-            <input id="pass" type="password" placeholder="" name="pass" value="">
+            <?php if (($_smarty_tpl->tpl_vars['action']->value == 'add')) {?>
+                <label for="pass">Hasło</label>
+                <input id="pass" type="password" placeholder="" name="pass" value="">
+            <?php }?>
 
-            </fieldset>
+        </fieldset>
         <fieldset> <!--nie można edytować adresu, tylko dac nowy-->
             <legend>Adres osoby</legend>
             <label for="city">Miasto</label>

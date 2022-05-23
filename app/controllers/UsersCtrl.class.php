@@ -34,7 +34,7 @@ class UsersCtrl
     public function action_userEdit()
     {
         //++ get id of person to edit from session or parameters
-
+        Utils::addInfoMessage("Uaktualnij dane użytkownika");
         if ($this->validateID()) {
             try {
                 $person = App::getDB()->get("user", "*", ["idUser" => $this->form->id]);
@@ -57,7 +57,7 @@ class UsersCtrl
                     Utils::addErrorMessage($e->getMessage());
             }
         }
-
+ 
         App::getSmarty()->assign("form", $this->form);
         App::getSmarty()->assign("action", "update");
         App::getSmarty()->display("UserEdit.tpl");
@@ -65,10 +65,52 @@ class UsersCtrl
 
     public function action_userEditDB()
     {
+        
         //sprawdź czy adres istnieje i weź jego id lub dodaj nowy i weź id
         //dodaj osobe jeśli nie istnieje i dodaj id adresu
         //do listy lub głównej z info udana operacja
+
+        if($this->validateFromPost(false)) {
+            try {
+                App::getDB()->update("user", [
+                    "login" => $this->form->login,
+                    "role" => $this->form->role,
+                    "registration_date" => $this->form->registered,
+                    "firstName" => $this->form->name,
+                    "lastName" => $this->form->surname
+                ], ["idUser" => $this->form->id]);
+            } catch (\PDOException $e) {
+                Utils::addErrorMessage('Wystąpił błąd podczas aktualizowania bazy');
+                if (App::getConf()->debug)
+                    Utils::addErrorMessage($e->getMessage());
+            }
+            //adres nie edytowac tylko nowy jak nie istnieje
+        }
+        //...
+
+
+
+        ////
+        if (App::getMessages()->isError()) { //gdy są błędy wróć do widoku
+            App::getSmarty()->assign("form", $this->form);
+            App::getSmarty()->assign("action", "update");
+            App::getSmarty()->display("UserEdit.tpl");
+        } else { //dodano do bazy
+            Utils::addInfoMessage("Zaktualizowano dane użytkownika");
+            SessionUtils::storeMessages();
+            App::getRouter()->redirectTo("listUsers");
+        }
     }
+
+
+/*
+                "city" => $this->form->city,
+                "street" => $this->form->street,
+                "buildingNumber" => $this->form->building,
+                "apartmentNumber" => $this->form->apartment
+*/
+
+
 
     public function action_userAdd()
     {
@@ -194,11 +236,16 @@ class UsersCtrl
     public function validateID()
     {
         $this->form->id = ParamUtils::getFromCleanURL(1, true, 'Błędne wywołanie aplikacji');
+        if(App::getDB()->get("user", "idUser", ["idUser" => $this->form->id]) == null) {
+            Utils::addErrorMessage("Brak osoby o podanym ID");
+        }
+        
         return !App::getMessages()->isError();
     }
 
-    public function validateFromPost() {
+    public function validateFromPost($pass=true) {
         $v = new Validator();
+        $this->form->id = $v->validateFromPost("id", ['required' => false]);
         $this->form->city = $v->validateFromPost("city", ['required' => true, 'required_message' => 'Nie podano miasta']);
         $this->form->street = $v->validateFromPost("street", ['required' => true, 'required_message' => 'Nie podano ulicy']);
         $this->form->building = $v->validateFromPost("building", ['required' => true, 'required_message' => 'Nie podano numeru budynku', 'int' => true]);
@@ -209,7 +256,9 @@ class UsersCtrl
         $this->form->registered = $v->validateFromPost("registered", ['required' => true, 'required_message' => 'Nie podano daty rejestracji']);
         $this->form->name = $v->validateFromPost("name", ['required' => true, 'required_message' => 'Nie podano imienia']);
         $this->form->surname = $v->validateFromPost("surname", ['required' => true, 'required_message' => 'Nie podano nazwiska']);
-        $this->form->pass = $v->validateFromPost("pass", ['required' => true, 'required_message' => 'Nie podano hasła']);
+        if ($pass) {
+            $this->form->pass = $v->validateFromPost("pass", ['required' => true, 'required_message' => 'Nie podano hasła']);
+        }
 
         return !App::getMessages()->isError();
     }

@@ -31,10 +31,12 @@
             <label for="registered">Data Rejestracji</label>
             <input id="registered" type="date" placeholder="YYYY-MM-DD" name="registered" value="{$form->registered|default:''}">
             
-            <label for="pass">Hasło</label>
-            <input id="pass" type="password" placeholder="" name="pass" value="">
+            {if ($action=='add')}
+                <label for="pass">Hasło</label>
+                <input id="pass" type="password" placeholder="" name="pass" value="">
+            {/if}
 
-            </fieldset>
+        </fieldset>
         <fieldset> <!--nie można edytować adresu, tylko dac nowy-->
             <legend>Adres osoby</legend>
             <label for="city">Miasto</label>
