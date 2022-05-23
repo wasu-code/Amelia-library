@@ -245,7 +245,7 @@ class UsersCtrl
 
     public function validateFromPost($pass=true) {
         $v = new Validator();
-        $this->form->id = $v->validateFromPost("id", ['required' => false]);
+        $this->form->id = $v->validateFromPost("id");
         $this->form->city = $v->validateFromPost("city", ['required' => true, 'required_message' => 'Nie podano miasta']);
         $this->form->street = $v->validateFromPost("street", ['required' => true, 'required_message' => 'Nie podano ulicy']);
         $this->form->building = $v->validateFromPost("building", ['required' => true, 'required_message' => 'Nie podano numeru budynku', 'int' => true]);
