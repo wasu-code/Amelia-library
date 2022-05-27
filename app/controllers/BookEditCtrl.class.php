@@ -32,19 +32,24 @@ class BookEditCtrl
 
         if ($this->validateFromPost()) {
             //+sprawdź czy książka już istnieje
-            /*$book = App::getDB()->select("book","idBook",[
-                "title" => $this->form->title,
-                "publicationDate" => $this->form->published,
+            $a = App::getDB()->get("Author", "idAuthor",[
+                "firstName" => $this->form->name,
+                "lastName" => $this->form->surname
             ]);
-            if($book==null){
-                for ($i=0;$i<count($book);$i++) {
-                    $author = App::getDB()->get("Book_has_Author","Author_idAuthor",["Book_idBook"==$book[i]["idBook"]]);
-                    //if($author==$this->form->name)
-                };
-                
+            if ($a!=null) {
+                $b = App::getDB()->select("book","idBook",[
+                    "title" => $this->form->title,
+                    "publicationDate" => $this->form->published,
+                ]);
 
-                Utils::addErrorMessage('Książka o takim tytule, dacie publikacji i autorze znajduje się już w bazie');
-            }*/
+                for ($i=0;$i<count($b);$i++) {
+                    $c = App::getDB()->get("Book_has_Author","Author_idAuthor",["Author_idAuthor" => $a, "Book_idBook" => $b]);
+                    if ($c!=null) {
+                        Utils::addErrorMessage('Książka o takim tytule, dacie publikacji i autorze znajduje się już w bazie');
+                        break;
+                    }
+                }
+            }
         }
 
         if (!App::getMessages()->isError()) { //jeśli nie ma błędów
@@ -180,7 +185,7 @@ class BookEditCtrl
     public function validateID()
     {
         $this->form->id = ParamUtils::getFromCleanURL(1, true, 'Błędne wywołanie aplikacji');
-        if (App::getDB()->get("user", "idUser", ["idUser" => $this->form->id]) == null) {
+        if (App::getDB()->get("Book", "idBook", ["idBook" => $this->form->id]) == null) {
             Utils::addErrorMessage("Brak ksążki o podanym ID");
         }
 
