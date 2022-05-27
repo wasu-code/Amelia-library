@@ -57,7 +57,7 @@ class UsersCtrl
                     Utils::addErrorMessage($e->getMessage());
             }
         }
- 
+
         App::getSmarty()->assign("form", $this->form);
         App::getSmarty()->assign("action", "update");
         App::getSmarty()->display("UserEdit.tpl");
@@ -65,28 +65,41 @@ class UsersCtrl
 
     public function action_userEditDB()
     {
-        
+
         //sprawdź czy adres istnieje i weź jego id lub dodaj nowy i weź id
         //dodaj osobe jeśli nie istnieje i dodaj id adresu
         //do listy lub głównej z info udana operacja
 
-        if($this->validateFromPost(false)) {
+        $this->validateFromPost(false);
+
+        $role = App::getDB()->get("user", "role", ["idUser" => $this->form->id]);
+
+        if (RoleUtils::inRole("mod") && ($role == "admin" || $role == "mod")) {
+            Utils::addErrorMessage("Brak Uprawnień do edycji roli nadrzędnej");
+        }
+
+        if (RoleUtils::inRole("user")) {
+            Utils::addErrorMessage("Brak Uprawnień do edycji roli nadrzędnej");
+        }
+
+        if (!App::getMessages()->isError()) {
             try {
+                $this->getAddressID(); //adres nie edytowac tylko nowy jak nie istnieje
+            
                 App::getDB()->update("user", [
                     "login" => $this->form->login,
                     "role" => $this->form->role,
                     "registration_date" => $this->form->registered,
                     "firstName" => $this->form->name,
-                    "lastName" => $this->form->surname
+                    "lastName" => $this->form->surname,
+                    "Address_idAddress" => $this->form->addressId
                 ], ["idUser" => $this->form->id]);
             } catch (\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił błąd podczas aktualizowania bazy');
                 if (App::getConf()->debug)
                     Utils::addErrorMessage($e->getMessage());
             }
-            //adres nie edytowac tylko nowy jak nie istnieje
         }
-        //...
 
 
 
@@ -102,16 +115,6 @@ class UsersCtrl
         }
     }
 
-
-/*
-                "city" => $this->form->city,
-                "street" => $this->form->street,
-                "buildingNumber" => $this->form->building,
-                "apartmentNumber" => $this->form->apartment
-*/
-
-
-
     public function action_userAdd()
     {
         Utils::addInfoMessage("Wpisz dane dla nowego użytkownika");
@@ -121,7 +124,7 @@ class UsersCtrl
 
     public function action_userAddDB()
     {
-        if($this->validateFromPost()) {
+        if ($this->validateFromPost()) {
             //sprawdź czy login zajęty
             $person = App::getDB()->get("user", "login", ["login" => $this->form->login]);
             if ($person != null) {
@@ -129,42 +132,14 @@ class UsersCtrl
             }
         }
 
+        if (RoleUtils::inRole("mod") && ($this->form->role == "admin" || $this->form->role == "mod")) {
+            Utils::addErrorMessage("Nie możesz utworzyć użytkownika o wyższej (lub równej) sobie randze");
+        }
+
+
         if (!App::getMessages()->isError()) { //jeśli nie ma błędów
             //sprawdź czy adres istnieje w bazie
-            $adr = App::getDB()->get("address", "idAddress", [
-                "AND" => [
-                    "city" => $this->form->city,
-                    "street" => $this->form->street,
-                    "buildingNumber" => $this->form->building,
-                    "apartmentNumber" => $this->form->apartment
-                ]
-            ]);
-
-            if ($adr != null) { ///tak->zwróć id
-                $this->form->addressId = $adr;
-            } else { ///nie-> dodaj i zwróć id
-                try {
-                    App::getDB()->insert("address", [
-                        "city" => $this->form->city,
-                        "street" => $this->form->street,
-                        "buildingNumber" => $this->form->building,
-                        "apartmentNumber" => $this->form->apartment
-                    ]);
-                } catch (\PDOException $e) {
-                    Utils::addErrorMessage('Wystąpił błąd podczas dodawania adresu');
-                    if (App::getConf()->debug)
-                        Utils::addErrorMessage($e->getMessage());
-                }
-                $adr = App::getDB()->get("address", "idAddress", [
-                    "AND" => [
-                        "city" => $this->form->city,
-                        "street" => $this->form->street,
-                        "buildingNumber" => $this->form->building,
-                        "apartmentNumber" => $this->form->apartment
-                    ]
-                ]);
-                $this->form->addressId = $adr;
-            }
+            $this->getAddressID();
 
             if (!App::getMessages()->isError()) {
                 try {
@@ -203,21 +178,22 @@ class UsersCtrl
         }
     }
 
-    public function action_userDelete() {
-        if($this->validateID()) {
-            $role= App::getDB()->get("user","role",["idUser" => $this->form->id]);
-            
-            if(RoleUtils::inRole("mod") && ($role=="admin" || $role=="mod")) {
+    public function action_userDelete()
+    {
+        if ($this->validateID()) {
+            $role = App::getDB()->get("user", "role", ["idUser" => $this->form->id]);
+
+            if (RoleUtils::inRole("mod") && ($role == "admin" || $role == "mod")) {
                 Utils::addErrorMessage("Brak Uprawnień do usunięcia roli nadrzędnej");
             }
 
-            if(RoleUtils::inRole("user")) {
+            if (RoleUtils::inRole("user")) {
                 Utils::addErrorMessage("Brak Uprawnień do usunięcia roli nadrzędnej");
             }
 
-            if(!App::getMessages()->isError()) {
+            if (!App::getMessages()->isError()) {
                 //usuń
-                App::getDB()->delete("user",["idUser" => $this->form->id]);
+                App::getDB()->delete("user", ["idUser" => $this->form->id]);
                 //info
                 Utils::addInfoMessage("Usunięcie powiodło się");
                 SessionUtils::storeMessages();
@@ -236,14 +212,15 @@ class UsersCtrl
     public function validateID()
     {
         $this->form->id = ParamUtils::getFromCleanURL(1, true, 'Błędne wywołanie aplikacji');
-        if(App::getDB()->get("user", "idUser", ["idUser" => $this->form->id]) == null) {
+        if (App::getDB()->get("user", "idUser", ["idUser" => $this->form->id]) == null) {
             Utils::addErrorMessage("Brak osoby o podanym ID");
         }
-        
+
         return !App::getMessages()->isError();
     }
 
-    public function validateFromPost($pass=true) {
+    public function validateFromPost($pass = true)
+    {
         $v = new Validator();
         $this->form->id = $v->validateFromPost("id");
         $this->form->city = $v->validateFromPost("city", ['required' => true, 'required_message' => 'Nie podano miasta']);
@@ -263,4 +240,42 @@ class UsersCtrl
         return !App::getMessages()->isError();
     }
 
+    public function getAddressID()
+    {
+        //sprawdź czy adres istnieje w bazie
+        $adr = App::getDB()->get("address", "idAddress", [
+            "AND" => [
+                "city" => $this->form->city,
+                "street" => $this->form->street,
+                "buildingNumber" => $this->form->building,
+                "apartmentNumber" => $this->form->apartment
+            ]
+        ]);
+
+        if ($adr != null) { ///tak->zwróć id
+            $this->form->addressId = $adr;
+        } else { ///nie-> dodaj i zwróć id
+            try {
+                App::getDB()->insert("address", [
+                    "city" => $this->form->city,
+                    "street" => $this->form->street,
+                    "buildingNumber" => $this->form->building,
+                    "apartmentNumber" => $this->form->apartment
+                ]);
+            } catch (\PDOException $e) {
+                Utils::addErrorMessage('Wystąpił błąd podczas dodawania adresu');
+                if (App::getConf()->debug)
+                    Utils::addErrorMessage($e->getMessage());
+            }
+            $adr = App::getDB()->get("address", "idAddress", [
+                "AND" => [
+                    "city" => $this->form->city,
+                    "street" => $this->form->street,
+                    "buildingNumber" => $this->form->building,
+                    "apartmentNumber" => $this->form->apartment
+                ]
+            ]);
+            $this->form->addressId = $adr;
+        }
+    }
 }

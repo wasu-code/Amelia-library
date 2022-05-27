@@ -18,26 +18,26 @@ Utils::addRoute('loginsuccesful', 'HelloCtrl', ["user","mod","admin"]); #OK //co
 Utils::addRoute('logCheck', 'LogCtrl'); #OK //perform login from form's data
 
 Utils::addRoute('listUsers', 'UsersCtrl',["mod","admin"]); #K //bez stronicowania
-Utils::addRoute('userEdit', 'UsersCtrl',["mod","admin"]);           //display form to enter data
-Utils::addRoute('userEditDB', 'UsersCtrl',["mod","admin"]);         //commit changes and write data do database
-Utils::addRoute('userAdd', 'UsersCtrl',["mod","admin"]); #K
-Utils::addRoute('userAddDB', 'UsersCtrl',["mod","admin"]); #K
+Utils::addRoute('userEdit', 'UsersCtrl',["mod","admin"]); #OK           //display form to enter data
+Utils::addRoute('userEditDB', 'UsersCtrl',["mod","admin"]); #OK        //commit changes and write data do database
+Utils::addRoute('userAdd', 'UsersCtrl',["mod","admin"]); #OK
+Utils::addRoute('userAddDB', 'UsersCtrl',["mod","admin"]); #OK
 Utils::addRoute('userDelete', 'UsersCtrl',["mod"]); #OK
 
-Utils::addRoute('listBooks', 'BookListCtrl');
+Utils::addRoute('listBooks', 'BookListCtrl'); #K
 Utils::addRoute('listReserved', 'BookListCtrl', ['mod']);
+Utils::addRoute('bookDetails', 'BookListCtrl');
+//Utils::addRoute('authorDetails', 'BookListCtrl');
 
-Utils::addRoute('addBook', 'BookEditCtrl', ['admin']);
-Utils::addRoute('showBookView', 'BookEditCtrl',["mod","admin"]);
-Utils::addRoute('deleteBook', 'BookEditCtrl', ['admin']);
-Utils::addRoute('editBook', 'BookEditCtrl', ['mod','admin']);
+Utils::addRoute('bookAdd', 'BookEditCtrl', ['admin']); #OK
+Utils::addRoute('bookAddDB', 'BookEditCtrl', ['admin']); #OK
+Utils::addRoute('bookDeleteDB', 'BookEditCtrl', ['admin']); #OK
+Utils::addRoute('bookEdit', 'BookEditCtrl',["mod","admin"]);
+Utils::addRoute('bookEditDB', 'BookEditCtrl', ['mod','admin']);
 
-Utils::addRoute('reserveBook', 'BookEditCtrl', ['user']);
-Utils::addRoute('rentBook', 'BookEditCtrl', ['mod']);
-Utils::addRoute('returnBook', 'BookEditCtrl', ['mod']);
-
-Utils::addRoute('bookDetails', 'DetailsCtrl');
-Utils::addRoute('authorDetails', 'DetailsCtrl');
+Utils::addRoute('bookReserve', 'BookEditCtrl', ['user']);
+Utils::addRoute('bookRent', 'BookEditCtrl', ['mod']);
+Utils::addRoute('bookReturn', 'BookEditCtrl', ['mod']);
 
 //TEST AREA
 Utils::addRoute('tst_view', 'HelloCtrl');//xx

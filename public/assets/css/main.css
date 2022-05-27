@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: #3d3d3d;
     color: antiquewhite;
@@ -71,6 +75,33 @@ body {
     background-color: rgb(221, 248, 14); 
 }
 
+/*Forms*/
+
+div.flexform {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+div.flexform fieldset {
+    width: 450px;
+    /*display: inline-block;*/
+}
+
+
+div.flexform fieldset input {
+    width: 200px;
+}
+
+div.flexform fieldset textarea {
+    min-width: 405px;
+}
+
+div.flexform fieldset label {
+    display: inline-block;
+    width: 200px;
+}
 
 
 /* Utils */

@@ -35,8 +35,8 @@
         <a href="{$conf->app_root}/userAdd">userAdd</a> | 
         <a href="{$conf->app_root}/userDelete">userDelete</a> | 
         <a href="{$conf->app_root}/userEdit">userEdit</a> | 
-        <a href="{$conf->app_root}/"></a> | 
-        <a href="{$conf->app_root}/"></a> | 
+        <a href="{$conf->app_root}/listBooks">listBooks</a> | 
+        <a href="{$conf->app_root}/bookAdd">bookAdd</a> | 
         <a href="{$conf->app_root}/"></a> | 
         <a href="{$conf->app_root}/"></a> | 
         
