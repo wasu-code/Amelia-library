@@ -21,9 +21,9 @@ class LogCtrl {
 
     public function action_logOut() {
         session_destroy();
-        Utils::addInfoMessage("Wylogowano poprawnie.");
+        //Utils::addInfoMessage("Wylogowano poprawnie.");
         
-        App::getSmarty()->display("HomePage.tpl");
+        App::getRouter()->redirectTo("logoutsuccessful");
     }
 
     public function action_logCheck() {

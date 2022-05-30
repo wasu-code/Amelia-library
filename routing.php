@@ -13,7 +13,8 @@ Utils::addRoute('homepage', 'HelloCtrl');
 Utils::addRoute('login', 'LogCtrl'); #OK //show login page
 Utils::addRoute('logOut', 'LogCtrl'); #OK
 Utils::addRoute('accessdenied', 'HelloCtrl'); #OK
-Utils::addRoute('loginsuccesful', 'HelloCtrl', ["user","mod","admin"]); #OK //confirmation message
+//Utils::addRoute('loginsuccesful', 'HelloCtrl', ["user","mod","admin"]); #OK //confirmation message
+Utils::addRoute('logoutsuccessful', 'HelloCtrl');
 Utils::addRoute('logCheck', 'LogCtrl'); #OK //perform login from form's data
 
 Utils::addRoute('listUsers', 'UsersCtrl',["mod","admin"]); #K //bez stronicowania

@@ -48,8 +48,13 @@ class HelloCtrl {
         App::getSmarty()->display("AccessDenied.tpl");
     }
 
-    public function action_loginsuccesful() {
-        App::getSmarty()->display("LoginConfirm.tpl");
+    /*public function action_loginsuccesful() {
+        Utils::addInfoMessage("Zalogowano poprawnie.");
+        App::getSmarty()->display("HomePage.tpl");
+    }*/
+
+    public function action_logoutsuccessful() {
+        App::getSmarty()->display("LogoutConfirm.tpl");
     }
     
 }

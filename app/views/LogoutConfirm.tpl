@@ -4,7 +4,7 @@
 
     <div class="full-ctr-out">
     <div class="full-ctr-in">
-        <h1>Zalogowano poprawnie</h1>
+        <h1>Wylogowano poprawnie</h1>
         <div>Wybierz co chcesz zrobić.</div>
     </div>
     </div>
