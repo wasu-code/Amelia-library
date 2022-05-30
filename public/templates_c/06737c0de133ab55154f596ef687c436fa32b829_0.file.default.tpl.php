@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-05-27 13:14:34
+/* Smarty version 4.1.0, created on 2022-05-28 16:26:14
   from 'D:\xampp\htdocs\amelia\app\views\templates\default.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6290b29a7ee7b0_73971844',
+  'unifunc' => 'content_62923106f04d15_47417240',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '06737c0de133ab55154f596ef687c436fa32b829' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\templates\\default.tpl',
-      1 => 1653650072,
+      1 => 1653747971,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6290b29a7ee7b0_73971844 (Smarty_Internal_Template $_smarty_tpl) {
+function content_62923106f04d15_47417240 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -57,7 +57,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12906446246290b29a7e2f66_74982458', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_25189388162923106ef3cb5_85161943', "content");
 ?>
 
 
@@ -66,19 +66,19 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_12906446246290b29a
 <div class="footer">
     <hr/>
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16837972186290b29a7e4895_48523409', "footer");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_202434694162923106ef5557_25706651', "footer");
 ?>
 
 </div>
 </body>
 </html><?php }
 /* {block "content"} */
-class Block_12906446246290b29a7e2f66_74982458 extends Smarty_Internal_Block
+class Block_25189388162923106ef3cb5_85161943 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_12906446246290b29a7e2f66_74982458',
+    0 => 'Block_25189388162923106ef3cb5_85161943',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -88,12 +88,12 @@ ERR: template didn't receive content<?php
 }
 /* {/block "content"} */
 /* {block "footer"} */
-class Block_16837972186290b29a7e4895_48523409 extends Smarty_Internal_Block
+class Block_202434694162923106ef5557_25706651 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'footer' => 
   array (
-    0 => 'Block_16837972186290b29a7e4895_48523409',
+    0 => 'Block_202434694162923106ef5557_25706651',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -104,18 +104,29 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
         <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /userAdd">userAdd</a> | 
         <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/userDelete">userDelete</a> | 
-        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /userEdit">userEdit</a> | 
         <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /listBooks">listBooks</a> | 
         <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /bookAdd">bookAdd</a> | 
         <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+/listReserved">listReserved</a> | 
+        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+/listRented">listRented</a> | 
+        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /"></a> | 
         <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /"></a> | 
-        
+        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+/"></a> | 
+        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+/"></a> | 
+        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+/"></a> | 
+        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+/"></a> | 
+        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+/"></a> | 
     <?php
 }
 }

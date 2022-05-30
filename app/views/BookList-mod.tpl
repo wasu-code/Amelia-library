@@ -31,8 +31,6 @@
                 <td>{$wiersz["genere"]}</td>
                 <td>{$wiersz["available"]}</td>
 
-                
-                <!--td><a href="{$conf->app_root}/bookDeleteDB/{$wiersz["idBook"]}">Usuń</a></td>
                 <td><a href="{$conf->app_root}/bookEdit/{$wiersz["idBook"]}">Edytuj</a></td>
                 <td>
                     <form method="post" action="{$conf->app_root}/bookRent/{$wiersz["idBook"]}"> 
@@ -40,8 +38,6 @@
                         <input type="submit" value="Wyporzycz"/>
                     </form>
                 </td>
-
-                <td><a href="{$conf->app_root}/bookReserve/{$wiersz["idBook"]}">Zarezerwuj</a></td-->
                 
             </tr>
         {/foreach}

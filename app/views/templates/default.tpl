@@ -33,13 +33,18 @@
     {block name="footer"}
         <a href="{$conf->app_root}/listUsers">listUsers</a> | 
         <a href="{$conf->app_root}/userAdd">userAdd</a> | 
-        <a href="{$conf->app_root}/userDelete">userDelete</a> | 
         <a href="{$conf->app_root}/userEdit">userEdit</a> | 
         <a href="{$conf->app_root}/listBooks">listBooks</a> | 
         <a href="{$conf->app_root}/bookAdd">bookAdd</a> | 
+        <a href="{$conf->app_root}/listReserved">listReserved</a> | 
+        <a href="{$conf->app_root}/listRented">listRented</a> | 
         <a href="{$conf->app_root}/"></a> | 
         <a href="{$conf->app_root}/"></a> | 
-        
+        <a href="{$conf->app_root}/"></a> | 
+        <a href="{$conf->app_root}/"></a> | 
+        <a href="{$conf->app_root}/"></a> | 
+        <a href="{$conf->app_root}/"></a> | 
+        <a href="{$conf->app_root}/"></a> | 
     {/block}
 </div>
 </body>

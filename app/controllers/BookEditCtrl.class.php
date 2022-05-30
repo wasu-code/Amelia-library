@@ -149,19 +149,6 @@ class BookEditCtrl
 
     }
 
-    public function action_bookReserve() {
-        //zapisz taransakcje; available--
-    }
-
-    public function action_bookRent() {
-        //zapisz taransakcje; available--
-        //usuń rezerwację jeśli była
-    }
-
-    public function action_bookReturn() {
-        //zapisz transakcje; available++
-    }
-
 
     ////
     public function validateFromPost($pass = true)

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-05-28 16:56:36
-  from 'D:\xampp\htdocs\amelia\app\views\BookList.tpl' */
+/* Smarty version 4.1.0, created on 2022-05-28 16:56:18
+  from 'D:\xampp\htdocs\amelia\app\views\BookList-mod.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_629238243fbe89_54712817',
+  'unifunc' => 'content_62923812f2a9b3_77710182',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '91077c64ddb9dc8ffbdf2244f9798441168499fc' => 
+    'ccf4f555aed7e09c7988cf1f4211b1594399410a' => 
     array (
-      0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\BookList.tpl',
-      1 => 1653749622,
+      0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\BookList-mod.tpl',
+      1 => 1653749554,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:messagebox.tpl' => 1,
   ),
 ),false)) {
-function content_629238243fbe89_54712817 (Smarty_Internal_Template $_smarty_tpl) {
+function content_62923812f2a9b3_77710182 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_119068458629238243d5c94_95922467', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_106270051962923812f09d33_55978783', "content");
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'default.tpl');
 }
 /* {block "content"} */
-class Block_119068458629238243d5c94_95922467 extends Smarty_Internal_Block
+class Block_106270051962923812f09d33_55978783 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_119068458629238243d5c94_95922467',
+    0 => 'Block_106270051962923812f09d33_55978783',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -88,10 +88,6 @@ $_smarty_tpl->tpl_vars['wiersz']->do_else = false;
                 <td><?php echo $_smarty_tpl->tpl_vars['wiersz']->value["available"];?>
 </td>
 
-                
-                <!--td><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/bookDeleteDB/<?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idBook"];?>
-">Usuń</a></td>
                 <td><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /bookEdit/<?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idBook"];?>
 ">Edytuj</a></td>
@@ -103,10 +99,6 @@ $_smarty_tpl->tpl_vars['wiersz']->do_else = false;
                         <input type="submit" value="Wyporzycz"/>
                     </form>
                 </td>
-
-                <td><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/bookReserve/<?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idBook"];?>
-">Zarezerwuj</a></td-->
                 
             </tr>
         <?php

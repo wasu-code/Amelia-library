@@ -4,38 +4,130 @@
 namespace app\controllers;
 
 use core\App;
-//use core\Utils;
+use core\Utils;
 //use core\ParamUtils;
-//use core\Validator;
+use core\Validator;
 //use core\SessionUtils;
-//use core\RoleUtils;
-//use app\forms\PersonEditForm;
+use core\RoleUtils;
+use app\forms\searchForm;
 
 ////
 
 class BookListCtrl
 {
-    //private $form;
+    private $form;
 
     public function __construct()
     {
-        //$this->form = new PersonEditForm();
+        $this->form = new SearchForm();
     }
 
     public function action_listBooks() {
-        $records = App::getDB()->select("book", ["idBook","title","publicationDate","genere","available"]);
+        $search_params = [];
+        $v = new Validator();
+        $this->form->title = $v->validateFromPost("sf_title");
+
+        if ( isset($this->form->title) && strlen($this->form->title) > 0) {
+			$search_params['title[~]'] = $this->form->title;
+		}
+        
+        $num_params = sizeof($search_params);
+		if ($num_params > 1) {
+			$where = [ "AND" => &$search_params ];
+		} else {
+			$where = &$search_params;
+		}
+		//dodanie frazy sortującej po nazwisku
+		$where ["ORDER"] = "title";
+
+
+
+        try {
+            $records = App::getDB()->select("book", ["idBook","title","publicationDate","genere","available"],$where);
+        } catch (\PDOException $e) {
+            Utils::addErrorMessage('Wystąpił błąd podczas odczytu z bazy');
+            if (App::getConf()->debug)
+                Utils::addErrorMessage($e->getMessage());
+        }
+        App::getSmarty()->assign("SearchForm", $this->form);
         App::getSmarty()->assign("lista", $records);
-        App::getSmarty()->display("BookList.tpl");
+        if(RoleUtils::inRole("user")) {
+            App::getSmarty()->display("BookList-user.tpl");  
+        } else if (RoleUtils::inRole("mod")) {
+            App::getSmarty()->display("BookList-mod.tpl");  
+        } else if (RoleUtils::inRole("admin")) {
+            App::getSmarty()->display("BookList-admin.tpl");  
+        } else {
+            App::getSmarty()->display("BookList.tpl");  
+        }
+        
     }
 
     public function action_listReserved() {
         //sprawdź transakcje i idBook tam gdzie reserved
         //wyświetl z book wskazanych przez reserved w transakcjach
+        try {
+            $records = [];
+            $tList = App::getDB()->select("Transaction",[
+                "User_idUser",
+                "Book_idBook",
+                "transactionDate",
+                "idTransaction"
+            ],["type" => "reserve"]);
+
+            for ($i=0;$i<count($tList);$i++) {
+                $records[$i]["title"] = App::getDB()->get("Book","title",["idBook" => $tList[$i]["Book_idBook"]]);
+                $records[$i]["login"] = App::getDB()->get("User","login",["idUser" => $tList[$i]["User_idUser"]]);
+                $records[$i]["date"] = $tList[$i]["transactionDate"];
+                $records[$i]["idTransaction"] = $tList[$i]["idTransaction"];
+            }
+
+            //$records = App::getDB()->select("transaction", "Book_idBook", ["type" => "reserve"]);
+        } catch (\PDOException $e) {
+            Utils::addErrorMessage('Wystąpił błąd podczas odczytu z bazy');
+            if (App::getConf()->debug)
+                Utils::addErrorMessage($e->getMessage());
+        }
+        App::getSmarty()->assign("lista", $records);
+        App::getSmarty()->display("ReservedList.tpl");
+    }
+
+    public function action_listRented() {
+        try {
+            $records = [];
+            $tList = App::getDB()->select("Transaction",[
+                "User_idUser",
+                "Book_idBook",
+                "transactionDate",
+                "idTransaction"
+            ],["type" => "rent"]);
+
+            for ($i=0;$i<count($tList);$i++) {
+                $records[$i]["title"] = App::getDB()->get("Book","title",["idBook" => $tList[$i]["Book_idBook"]]);
+                $records[$i]["login"] = App::getDB()->get("User","login",["idUser" => $tList[$i]["User_idUser"]]);
+                $records[$i]["date"] = $tList[$i]["transactionDate"];
+                $records[$i]["idTransaction"] = $tList[$i]["idTransaction"];
+            }
+
+        } catch (\PDOException $e) {
+            Utils::addErrorMessage('Wystąpił błąd podczas odczytu z bazy');
+            if (App::getConf()->debug)
+                Utils::addErrorMessage($e->getMessage());
+        }
+        App::getSmarty()->assign("lista", $records);
+        App::getSmarty()->display("RentedList.tpl");
     }
 
     public function action_bookDetails() {
         //widok dodać
         //+dodać pokaż więcej w widoku listy
+    }
+
+    ///TST AREA
+    public function action_tst_transactions() {
+        $records = App::getDB()->select("Transaction", ["idTransaction","type","transactionDate","User_idUser","Book_idBook"]);
+        App::getSmarty()->assign("lista", $records);
+        App::getSmarty()->display("tst_BookList.tpl");
     }
 
 
