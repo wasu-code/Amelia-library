@@ -24,7 +24,7 @@ class BookListCtrl
 
     ////
 
-    public function action_listBooks() {
+    public function listing() {
         $search_params = [];
         $v = new Validator();
         $this->form->title = $v->validateFromPost("sf_title");
@@ -67,16 +67,29 @@ class BookListCtrl
         App::getSmarty()->assign("page", $currentPage);
         App::getSmarty()->assign("limit", $recordsLimit);
         if(RoleUtils::inRole("user")) {
-            //App::getSmarty()->assign("role", $recordsLimit);
-            App::getSmarty()->display("BookList-user.tpl");  
+            $role="user";
+            //App::getSmarty()->display("BookList-user.tpl");  
         } else if (RoleUtils::inRole("mod")) {
-            App::getSmarty()->display("BookList-mod.tpl");  
+            $role="mod";
+            //App::getSmarty()->display("BookList-mod.tpl");  
         } else if (RoleUtils::inRole("admin")) {
-            App::getSmarty()->display("BookList-admin.tpl");  
+            $role="admin";
+            //App::getSmarty()->display("BookList-admin.tpl");  
         } 
+        App::getSmarty()->assign("role", $role);
         //App::getSmarty()->display("BookList.tpl");  
         
         
+    }
+
+    public function action_listBooks() {
+        $this->listing();
+        App::getSmarty()->display("BookList.tpl");
+    }
+
+    public function action_listBooks_table() {
+        $this->listing();
+        App::getSmarty()->display("BookList-table.tpl");
     }
 
     public function action_listReserved() {

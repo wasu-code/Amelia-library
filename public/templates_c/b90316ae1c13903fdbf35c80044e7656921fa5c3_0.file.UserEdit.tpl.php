@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-05-31 10:52:01
+/* Smarty version 4.1.0, created on 2022-06-04 19:02:28
   from 'D:\xampp\htdocs\amelia\app\views\UserEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6295d73185ff88_16286886',
+  'unifunc' => 'content_629b9024c7e955_67092479',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b90316ae1c13903fdbf35c80044e7656921fa5c3' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\UserEdit.tpl',
-      1 => 1653987111,
+      1 => 1654362144,
       2 => 'file',
     ),
   ),
@@ -21,34 +21,36 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:messagebox.tpl' => 1,
   ),
 ),false)) {
-function content_6295d73185ff88_16286886 (Smarty_Internal_Template $_smarty_tpl) {
+function content_629b9024c7e955_67092479 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9753715736295d7317d2e18_88731178', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1442562174629b9024c53f76_92933914', "content");
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'default.tpl');
 }
 /* {block "content"} */
-class Block_9753715736295d7317d2e18_88731178 extends Smarty_Internal_Block
+class Block_1442562174629b9024c53f76_92933914 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_9753715736295d7317d2e18_88731178',
+    0 => 'Block_1442562174629b9024c53f76_92933914',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
+    <div id="msgs">
     <?php $_smarty_tpl->_subTemplateRender('file:messagebox.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
+    </div>
 
-    <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;
-if (($_smarty_tpl->tpl_vars['action']->value == 'add')) {?>userAddDB<?php }
-if (($_smarty_tpl->tpl_vars['action']->value == 'update')) {?>userEditDB<?php }?>" method="post">
+    <form  id="data-form" onsubmit="ajaxPostForm('data-form','<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+/<?php if (($_smarty_tpl->tpl_vars['action']->value == 'add')) {?>userAddDB<?php }
+if (($_smarty_tpl->tpl_vars['action']->value == 'update')) {?>userEditDB<?php }?>','msgs'); return false;">
         <div class="flexform">
             <fieldset>
                 <legend>Dane osoby</legend>

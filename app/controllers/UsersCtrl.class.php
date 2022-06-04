@@ -157,13 +157,15 @@ class UsersCtrl
 
         ////
         if (App::getMessages()->isError()) { //gdy są błędy wróć do widoku
-            App::getSmarty()->assign("form", $this->form);
+            App::getSmarty()->assign("form", $this->form);//xx bo ajax
             App::getSmarty()->assign("action", "update");
-            App::getSmarty()->display("UserEdit.tpl");
+            //App::getSmarty()->display("UserEdit.tpl");
+            App::getSmarty()->display("messagebox.tpl");
         } else { //dodano do bazy
-            Utils::addInfoMessage("Zaktualizowano dane użytkownika");
+            Utils::addInfoMessage("Zmiany zostały zapisane, możesz opuścić tą stronę");
             SessionUtils::storeMessages();
-            App::getRouter()->redirectTo("listUsers");
+            //App::getRouter()->redirectTo("listUsers");
+            App::getSmarty()->display("messagebox.tpl");
         }
     }
 
@@ -216,14 +218,15 @@ class UsersCtrl
 
         ////
         if (App::getMessages()->isError()) { //gdy są błędy wróć do widoku
-            App::getSmarty()->assign("form", $this->form);
+            App::getSmarty()->assign("form", $this->form);//xx bo ajax
             App::getSmarty()->assign("action", "add");
-            App::getSmarty()->display("UserEdit.tpl");
+            //App::getSmarty()->display("UserEdit.tpl");
+            App::getSmarty()->display("messagebox.tpl");
         } else { //dodaj do bazy
             Utils::addInfoMessage("Dodano nową osobę do bazy");
             SessionUtils::storeMessages();
-            App::getRouter()->redirectTo("homepage");
-            //App::getSmarty()->display("HomePage.tpl");
+            //App::getRouter()->redirectTo("homepage");
+            App::getSmarty()->display("messagebox.tpl");
         }
     }
 
@@ -251,13 +254,13 @@ class UsersCtrl
                     SessionUtils::storeMessages();
                     //App::getRouter()->redirectTo("listUsers");//??
                 }
-                $this->listing();
-                App::getSmarty()->display("UsersList-table.tpl");
             } catch (\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił błąd podczas usuwania osoby');
                 if (App::getConf()->debug)
                     Utils::addErrorMessage($e->getMessage());
             }
+            $this->listing();
+            App::getSmarty()->display("UsersList-table.tpl");
         } else {
             SessionUtils::storeMessages();
             App::getRouter()->redirectTo("homepage");

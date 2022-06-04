@@ -1,12 +1,14 @@
 {extends file='default.tpl'}
 
 {block name="content"}
+    <div id="msgs">
     {include file='messagebox.tpl'}
+    </div>
 
-    <form action="{strip}{$conf->action_root}
-                    {if ($action=='add')}userAddDB{/if}
-                    {if ($action=='update')}userEditDB{/if}
-                  {/strip}" method="post">
+    <form {strip} id="data-form" onsubmit="ajaxPostForm('data-form','{$conf->app_root}/
+                {if ($action=='add')}userAddDB{/if}
+                {if ($action=='update')}userEditDB{/if}
+                ','msgs'); return false;">{/strip}
         <div class="flexform">
             <fieldset>
                 <legend>Dane osoby</legend>

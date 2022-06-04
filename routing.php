@@ -26,6 +26,7 @@ Utils::addRoute('userAddDB', 'UsersCtrl',["mod","admin"]); #OK
 Utils::addRoute('userDelete', 'UsersCtrl',["mod","admin"]); #OK
 
 Utils::addRoute('listBooks', 'BookListCtrl'); #OK - bez stronicowania
+Utils::addRoute('listBooks_table', 'BookListCtrl'); 
 Utils::addRoute('listReserved', 'BookListCtrl', ['mod']); #K - brak wyszukiwania
 Utils::addRoute('listRented', 'BookListCtrl', ['mod']); #K - brak wyszukiwania
 //Utils::addRoute('bookDetails', 'BookListCtrl');

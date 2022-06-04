@@ -1,9 +1,4 @@
-{extends file='default.tpl'}
-
-{block name="content"}
-    {include file='messagebox.tpl'}
-
-    <form action="{$conf->app_root}/listBooks" method="post">
+<form id="search-form" onsubmit="ajaxPostForm('search-form','{$conf->app_root}/listBooks_table','table'); return false;">
         <fieldset>
             <legend>Opcje wyszukiwania</legend>
             <label for="sf_title">Tytuł:</label>
@@ -14,7 +9,8 @@
         </fieldset>
         <br/>
         <button onclick="document.getElementById('pageNo').value={$page-1}" type="submit">«</button> 
-            page: <input type="text" class="intinput" placeholder="strona" name="page" id="pageNo" value="{$page|default:0}" />  
+            page: <input type="text" class="intinput" onkeydown="return event.key != 'Enter';" placeholder="strona" name="page" id="pageNo" value="{$page|default:0}" />  
+            <button type="submit">GO!</button> 
         {if count($lista)>=$limit}<button onclick="document.getElementById('pageNo').value={$page+1}" type="submit">»</button>{/if}
     </form>
     
@@ -35,17 +31,24 @@
                 <td>{$wiersz["genere"]}</td>
                 <td>{$wiersz["available"]}</td>
 
-                <td><a href="{$conf->app_root}/bookEdit/{$wiersz["idBook"]}">Edytuj</a></td>
-                <td>
-                    <form method="post" action="{$conf->app_root}/bookRent/{$wiersz["idBook"]}"> 
-                        <input type="text" placeholder="login" name="login"/>
-                        <input type="submit" value="Wyporzycz"/>
-                    </form>
-                </td>
-                
+                {if $role=="admin"}
+                    <td><a href="{$conf->app_root}/bookDeleteDB/{$wiersz["idBook"]}"><button>Usuń</button></a></td>
+                    <td><a href="{$conf->app_root}/bookEdit/{$wiersz["idBook"]}"><button>Edytuj</button></a></td>
+                {/if}
+                {if $role=="mod"}
+                    <td><a href="{$conf->app_root}/bookEdit/{$wiersz["idBook"]}"><button>Edytuj</button></a></td>
+                    <td>
+                        <form method="post" action="{$conf->app_root}/bookRent/{$wiersz["idBook"]}"> 
+                            <input type="text" placeholder="login" name="login"/>
+                            <input type="submit" value="Wyporzycz"/>
+                        </form>
+                    </td>
+                {/if}
+                {if $role=="user"}
+                    <td><a href="{$conf->app_root}/bookReserve/{$wiersz["idBook"]}"><button>Zarezerwuj</button></a></td>
+                {/if}
+
             </tr>
         {/foreach}
     </table>
     {if count($lista)<$limit}Osiągnięto koniec listy{/if}
-
-{/block}

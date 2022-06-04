@@ -108,13 +108,15 @@ class BookEditCtrl
 
         ////
         if (App::getMessages()->isError()) { //gdy są błędy wróć do widoku
-            App::getSmarty()->assign("form", $this->form);
+            App::getSmarty()->assign("form", $this->form);//xx bo ajax
             App::getSmarty()->assign("action", "add");
-            App::getSmarty()->display("BookEdit.tpl");
+            //App::getSmarty()->display("BookEdit.tpl");
+            App::getSmarty()->display("messagebox.tpl");
         } else { //dodaj do bazy
-            Utils::addInfoMessage("Dodano nową książkę do bazy");
+            Utils::addInfoMessage("Dodano nową książkę do bazy. Możesz dodać kolejną");
             SessionUtils::storeMessages();
-            App::getRouter()->redirectTo("homepage");
+            //App::getRouter()->redirectTo("homepage");
+            App::getSmarty()->display("messagebox.tpl");
         }
     }
 
@@ -146,7 +148,7 @@ class BookEditCtrl
     }
 
     public function action_bookEditDB() {
-
+        //App::getSmarty()->display("messagebox.tpl");
     }
 
 
