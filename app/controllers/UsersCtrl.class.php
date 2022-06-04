@@ -27,7 +27,7 @@ class UsersCtrl
 
     ////
 
-    public function action_listUsers()
+    public function listing()
     {
         $search_params = [];
         $v = new Validator();
@@ -70,7 +70,17 @@ class UsersCtrl
         App::getSmarty()->assign("lista", $records);
         App::getSmarty()->assign("page", $currentPage);
         App::getSmarty()->assign("limit", $recordsLimit);
+        //App::getSmarty()->display("UsersList.tpl");
+    }
+
+    public function action_listUsers() {
+        $this->listing();
         App::getSmarty()->display("UsersList.tpl");
+    }
+
+    public function action_listUsers_table() {
+        $this->listing();
+        App::getSmarty()->display("UsersList-table.tpl");
     }
 
     public function action_userEdit()
@@ -229,17 +239,24 @@ class UsersCtrl
             if (RoleUtils::inRole("user")) {
                 Utils::addErrorMessage("Brak Uprawnień do usunięcia roli nadrzędnej");
             }
-
-            if (!App::getMessages()->isError()) {
-                //usuń
-                App::getDB()->delete("user", ["idUser" => $this->form->id]);
-                //info
-                Utils::addInfoMessage("Usunięcie powiodło się");
-                SessionUtils::storeMessages();
-                App::getRouter()->redirectTo("listUsers");
-            } else {
-                SessionUtils::storeMessages();
-                App::getRouter()->redirectTo("listUsers");
+            try {
+                if (!App::getMessages()->isError()) {
+                    //usuń
+                    App::getDB()->delete("user", ["idUser" => $this->form->id]);
+                    //info
+                    Utils::addInfoMessage("Usunięcie powiodło się");
+                    SessionUtils::storeMessages();
+                    //App::getRouter()->redirectTo("listUsers");//??
+                } else {
+                    SessionUtils::storeMessages();
+                    //App::getRouter()->redirectTo("listUsers");//??
+                }
+                $this->listing();
+                App::getSmarty()->display("UsersList-table.tpl");
+            } catch (\PDOException $e) {
+                Utils::addErrorMessage('Wystąpił błąd podczas usuwania osoby');
+                if (App::getConf()->debug)
+                    Utils::addErrorMessage($e->getMessage());
             }
         } else {
             SessionUtils::storeMessages();

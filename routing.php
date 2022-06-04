@@ -18,6 +18,7 @@ Utils::addRoute('logoutsuccessful', 'HelloCtrl');
 Utils::addRoute('logCheck', 'LogCtrl'); #OK //perform login from form's data
 
 Utils::addRoute('listUsers', 'UsersCtrl',["mod","admin"]); #K //bez stronicowania
+Utils::addRoute('listUsers_table', 'UsersCtrl',["mod","admin"]);
 Utils::addRoute('userEdit', 'UsersCtrl',["mod","admin"]); #OK           //display form to enter data
 Utils::addRoute('userEditDB', 'UsersCtrl',["mod","admin"]); #OK        //commit changes and write data do database
 Utils::addRoute('userAdd', 'UsersCtrl',["mod","admin"]); #OK
@@ -27,14 +28,14 @@ Utils::addRoute('userDelete', 'UsersCtrl',["mod","admin"]); #OK
 Utils::addRoute('listBooks', 'BookListCtrl'); #OK - bez stronicowania
 Utils::addRoute('listReserved', 'BookListCtrl', ['mod']); #K - brak wyszukiwania
 Utils::addRoute('listRented', 'BookListCtrl', ['mod']); #K - brak wyszukiwania
-Utils::addRoute('bookDetails', 'BookListCtrl');
+//Utils::addRoute('bookDetails', 'BookListCtrl');
 //Utils::addRoute('authorDetails', 'BookListCtrl');
 
 Utils::addRoute('bookAdd', 'BookEditCtrl', ['admin']); #OK
 Utils::addRoute('bookAddDB', 'BookEditCtrl', ['admin']); #OK
 Utils::addRoute('bookDeleteDB', 'BookEditCtrl', ['admin']); #OK
-Utils::addRoute('bookEdit', 'BookEditCtrl',["mod","admin"]);
-Utils::addRoute('bookEditDB', 'BookEditCtrl', ['mod','admin']);
+//Utils::addRoute('bookEdit', 'BookEditCtrl',["mod","admin"]);
+//Utils::addRoute('bookEditDB', 'BookEditCtrl', ['mod','admin']);
 
 Utils::addRoute('bookReserve', 'BookStatusCtrl', ['user']); #K
 Utils::addRoute('bookRent', 'BookStatusCtrl', ['mod']); #K

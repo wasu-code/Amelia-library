@@ -67,14 +67,15 @@ class BookListCtrl
         App::getSmarty()->assign("page", $currentPage);
         App::getSmarty()->assign("limit", $recordsLimit);
         if(RoleUtils::inRole("user")) {
+            //App::getSmarty()->assign("role", $recordsLimit);
             App::getSmarty()->display("BookList-user.tpl");  
         } else if (RoleUtils::inRole("mod")) {
             App::getSmarty()->display("BookList-mod.tpl");  
         } else if (RoleUtils::inRole("admin")) {
             App::getSmarty()->display("BookList-admin.tpl");  
-        } else {
-            App::getSmarty()->display("BookList.tpl");  
-        }
+        } 
+        //App::getSmarty()->display("BookList.tpl");  
+        
         
     }
 

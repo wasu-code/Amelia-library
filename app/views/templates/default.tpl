@@ -5,6 +5,7 @@
 	<title>Amelia's Library</title>
     <link rel="stylesheet" href="{$conf->app_root}/assets/css/main.css">
     <link rel="icon" type="image/svg" href="https://twemoji.maxcdn.com/v/latest/svg/1f4da.svg"/>
+    <script src="{$conf->app_root}/assets/js/functions.js"></script>
 </head>
 <body>
     
