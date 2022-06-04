@@ -16,6 +16,8 @@ use app\forms\searchForm;
 class BookListCtrl
 {
     private $form;
+    private $currentPage;
+    private $recordsLimit = 2;
 
     public function __construct()
     {
@@ -37,7 +39,7 @@ class BookListCtrl
 		} else {
 			$where = &$search_params;
 		}
-		//dodanie frazy sortującej po nazwisku
+		//dodanie frazy sortującej
 		$where ["ORDER"] = "title";
 
 
@@ -68,16 +70,16 @@ class BookListCtrl
         //wyświetl z book wskazanych przez reserved w transakcjach
         try {
             $records = [];
-            $tList = App::getDB()->select("Transaction",[
-                "User_idUser",
-                "Book_idBook",
+            $tList = App::getDB()->select("transaction",[
+                "user_idUser",
+                "book_idBook",
                 "transactionDate",
                 "idTransaction"
             ],["type" => "reserve"]);
 
             for ($i=0;$i<count($tList);$i++) {
-                $records[$i]["title"] = App::getDB()->get("Book","title",["idBook" => $tList[$i]["Book_idBook"]]);
-                $records[$i]["login"] = App::getDB()->get("User","login",["idUser" => $tList[$i]["User_idUser"]]);
+                $records[$i]["title"] = App::getDB()->get("book","title",["idBook" => $tList[$i]["book_idBook"]]);
+                $records[$i]["login"] = App::getDB()->get("user","login",["idUser" => $tList[$i]["user_idUser"]]);
                 $records[$i]["date"] = $tList[$i]["transactionDate"];
                 $records[$i]["idTransaction"] = $tList[$i]["idTransaction"];
             }
@@ -95,16 +97,16 @@ class BookListCtrl
     public function action_listRented() {
         try {
             $records = [];
-            $tList = App::getDB()->select("Transaction",[
-                "User_idUser",
-                "Book_idBook",
+            $tList = App::getDB()->select("transaction",[
+                "user_idUser",
+                "book_idBook",
                 "transactionDate",
                 "idTransaction"
             ],["type" => "rent"]);
 
             for ($i=0;$i<count($tList);$i++) {
-                $records[$i]["title"] = App::getDB()->get("Book","title",["idBook" => $tList[$i]["Book_idBook"]]);
-                $records[$i]["login"] = App::getDB()->get("User","login",["idUser" => $tList[$i]["User_idUser"]]);
+                $records[$i]["title"] = App::getDB()->get("book","title",["idBook" => $tList[$i]["book_idBook"]]);
+                $records[$i]["login"] = App::getDB()->get("user","login",["idUser" => $tList[$i]["user_idUser"]]);
                 $records[$i]["date"] = $tList[$i]["transactionDate"];
                 $records[$i]["idTransaction"] = $tList[$i]["idTransaction"];
             }
@@ -125,7 +127,7 @@ class BookListCtrl
 
     ///TST AREA
     public function action_tst_transactions() {
-        $records = App::getDB()->select("Transaction", ["idTransaction","type","transactionDate","User_idUser","Book_idBook"]);
+        $records = App::getDB()->select("transaction", ["idTransaction","type","transactionDate","user_idUser","book_idBook"]);
         App::getSmarty()->assign("lista", $records);
         App::getSmarty()->display("tst_BookList.tpl");
     }
