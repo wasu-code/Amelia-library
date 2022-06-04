@@ -29,20 +29,20 @@ class BookStatusCtrl
         if($this->validateID()) {
             $this->userID = App::getDB()->get("User","idUser",["login" => $_SESSION["loggedAs"]]);
             try {
-                $available = App::getDB()->get("Book", "available",["idBook" => $this->bookID]);
+                $available = App::getDB()->get("book", "available",["idBook" => $this->bookID]);
                 if($available>0) {
                     //zmniejsz ilość dostępnych
-                    App::getDB()->update("Book",[
+                    App::getDB()->update("book",[
                         "available" => $available-1,
                     ],[
                         "idBook" => $this->bookID
                     ]);
                     //zapisz transakcję
-                    App::getDB()->insert("Transaction",[
+                    App::getDB()->insert("transaction",[
                         "type" => "reserve",
                         "transactionDate" => date("Y-m-d"),
-                        "Book_idBook" => $this->bookID,
-                        "User_idUser" => $this->userID
+                        "book_idBook" => $this->bookID,
+                        "user_idUser" => $this->userID
                     ]);
                 } else {
                     Utils::addErrorMessage("Nie ma dostępnych egzemplarzy");
@@ -72,20 +72,20 @@ class BookStatusCtrl
         if($this->validateID() && $this->validateLogin()) {
 
            try {
-                $available = App::getDB()->get("Book", "available",["idBook" => $this->bookID]);
+                $available = App::getDB()->get("book", "available",["idBook" => $this->bookID]);
                 if($available>0) {
                     //zmniejsz ilość dostępnych
-                    App::getDB()->update("Book",[
+                    App::getDB()->update("book",[
                         "available" => $available-1,
                     ],[
                         "idBook" => $this->bookID
                     ]);
                     //zapisz transakcję
-                    App::getDB()->insert("Transaction",[
+                    App::getDB()->insert("transaction",[
                         "type" => "rent",
                         "transactionDate" => date("Y-m-d"),
-                        "Book_idBook" => $this->bookID,
-                        "User_idUser" => $this->userID
+                        "book_idBook" => $this->bookID,
+                        "user_idUser" => $this->userID
                     ]);
                 } else {
                     Utils::addErrorMessage("Nie ma dostępnych egzemplarzy");
@@ -118,15 +118,15 @@ class BookStatusCtrl
         if($this->validateTransaction()){
             try {
                 //zapisz transakcję
-                App::getDB()->insert("Transaction",[
+                App::getDB()->insert("transaction",[
                     "type" => "rent",
                     "transactionDate" => date("Y-m-d"),
-                    "Book_idBook" => $this->bookID,
-                    "User_idUser" => $this->userID
+                    "book_idBook" => $this->bookID,
+                    "user_idUser" => $this->userID
                 ]);
                 if (!App::getMessages()->isError()) {
                     //delete reservation
-                    App::getDB()->delete("Transaction",["idTransaction" => $this->transactionID]);
+                    App::getDB()->delete("transaction",["idTransaction" => $this->transactionID]);
                 }
             } catch (\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił błąd');
@@ -150,22 +150,22 @@ class BookStatusCtrl
 
         if($this->validateTransaction()){
             try {       
-                $available = App::getDB()->get("Book", "available",["idBook" => $this->bookID]);
+                $available = App::getDB()->get("book", "available",["idBook" => $this->bookID]);
                 //zmniejsz ilość dostępnych
-                App::getDB()->update("Book",[
+                App::getDB()->update("book",[
                     "available" => $available+1,
                 ],[
                     "idBook" => $this->bookID
                 ]);
                 //zapisz transakcję
-                App::getDB()->insert("Transaction",[
+                App::getDB()->insert("transaction",[
                     "type" => "return",
                     "transactionDate" => date("Y-m-d"),
-                    "Book_idBook" => $this->bookID,
-                    "User_idUser" => $this->userID
+                    "book_idBook" => $this->bookID,
+                    "user_idUser" => $this->userID
                 ]);
                 //zaktualizuj starą transakcję
-                App::getDB()->update("Transaction",[
+                App::getDB()->update("transaction",[
                     "type" => "rented&returned",
                 ],[
                     "Book_idBook" => $this->bookID,
@@ -191,7 +191,7 @@ class BookStatusCtrl
     public function validateID()
     {
         $this->bookID = ParamUtils::getFromCleanURL(1, true, 'Błędne wywołanie aplikacji');
-        if (App::getDB()->get("Book", "idBook", ["idBook" => $this->bookID]) == null) {
+        if (App::getDB()->get("book", "idBook", ["idBook" => $this->bookID]) == null) {
             Utils::addErrorMessage("Brak ksążki o podanym ID");
         }
 
@@ -201,11 +201,11 @@ class BookStatusCtrl
     public function validateTransaction()
     {
         $this->transactionID = ParamUtils::getFromCleanURL(1, true, 'Błędne wywołanie aplikacji');
-        if (App::getDB()->get("Transaction", "idTransaction", ["idTransaction" => $this->transactionID]) == null) {
+        if (App::getDB()->get("transaction", "idTransaction", ["idTransaction" => $this->transactionID]) == null) {
             Utils::addErrorMessage("Brak ksążki o podanym ID");
         } else {
-            $this->bookID = App::getDB()->get("Transaction","Book_idBook",["idTransaction" => $this->transactionID]);
-            $this->userID = App::getDB()->get("Transaction","User_idUser",["idTransaction" => $this->transactionID]);
+            $this->bookID = App::getDB()->get("transaction","Book_idBook",["idTransaction" => $this->transactionID]);
+            $this->userID = App::getDB()->get("transaction","User_idUser",["idTransaction" => $this->transactionID]);
         }
 
         return !App::getMessages()->isError();

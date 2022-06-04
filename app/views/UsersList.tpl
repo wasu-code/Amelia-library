@@ -22,8 +22,8 @@
                 <td>{$wiersz["firstName"]}</td>
                 <td>{$wiersz["lastName"]}</td>
                 <td class="hidden">{$wiersz["Adrdress_idAddress"]}</td>
-                <td><a href="{$conf->app_root}/userEdit/{$wiersz["idUser"]}">Edytuj Dane</a></td>
-                <td><a href="{$conf->app_root}/userDelete/{$wiersz["idUser"]}">Usuń Użytkownika</a></td>
+                <td><a href="{$conf->app_root}/userEdit/{$wiersz["idUser"]}"><button>Edytuj Dane</button></a></td>
+                <td><a href="{$conf->app_root}/userDelete/{$wiersz["idUser"]}"><button>Usuń Użytkownika</button></a></td>
             </tr>
         {/foreach}
     </table>

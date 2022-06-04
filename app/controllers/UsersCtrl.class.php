@@ -26,7 +26,7 @@ class UsersCtrl
 
     public function action_listUsers()
     {
-        $records = App::getDB()->select("user", ["idUser", "login", "role", "registration_date", "firstName", "lastName", "Address_idAddress"]);
+        $records = App::getDB()->select("user", ["idUser", "login", "role", "registration_date", "firstName", "lastName", "Address_idAddress"],["ORDER" => "login"]);
         App::getSmarty()->assign("lista", $records);
         App::getSmarty()->display("UsersList.tpl");
     }
@@ -167,9 +167,6 @@ class UsersCtrl
             App::getSmarty()->assign("form", $this->form);
             App::getSmarty()->assign("action", "add");
             App::getSmarty()->display("UserEdit.tpl");
-            //SessionUtils::storeMessages();
-            //SessionUtils::store('form', $this->form);
-            //App::getRouter()->redirectTo("userAdd");
         } else { //dodaj do bazy
             Utils::addInfoMessage("Dodano nową osobę do bazy");
             SessionUtils::storeMessages();
@@ -230,7 +227,7 @@ class UsersCtrl
 
         $this->form->login = $v->validateFromPost("login", ['required' => true, 'required_message' => 'Nie podano loginu']);
         $this->form->role = $v->validateFromPost("role", ['required' => true, 'required_message' => 'Nie podano roli']);
-        $this->form->registered = $v->validateFromPost("registered", ['required' => true, 'required_message' => 'Nie podano daty rejestracji']);
+        $this->form->registered = $v->validateFromPost("registered", ['required' => true, 'required_message' => 'Nie podano daty rejestracji', 'date_format' => 'Y-m-d'])->format('Y-m-d'); //data to obiekt, by na text ->format('Y-m-d')
         $this->form->name = $v->validateFromPost("name", ['required' => true, 'required_message' => 'Nie podano imienia']);
         $this->form->surname = $v->validateFromPost("surname", ['required' => true, 'required_message' => 'Nie podano nazwiska']);
         if ($pass) {

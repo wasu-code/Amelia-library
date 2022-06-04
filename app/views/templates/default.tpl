@@ -9,9 +9,11 @@
 <body>
     
     <nav class="nav">
-        <img class="navicon" src="https://twemoji.maxcdn.com/v/latest/svg/1f4da.svg"/>
+        <a href="{$conf->app_root}">
+            <img class="navicon" src="https://twemoji.maxcdn.com/v/latest/svg/1f4da.svg"/>
+        </a>
         <div class="whitelinks">
-            <h1>Amelia's Library</h1>
+            <h1><a href="{$conf->app_root}">Amelia's Library</a></h1>
             <li><a href="{$conf->app_root}/elo">Elo</a></li>
             <li><a href="{$conf->app_root}">BB</a></li>
             {if !isset($smarty.session.loggedAs)}

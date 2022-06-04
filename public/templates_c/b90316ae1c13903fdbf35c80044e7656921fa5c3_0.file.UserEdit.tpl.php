@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-05-27 14:03:34
+/* Smarty version 4.1.0, created on 2022-05-31 10:52:01
   from 'D:\xampp\htdocs\amelia\app\views\UserEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6290be16f03296_47087329',
+  'unifunc' => 'content_6295d73185ff88_16286886',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b90316ae1c13903fdbf35c80044e7656921fa5c3' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\UserEdit.tpl',
-      1 => 1653653013,
+      1 => 1653987111,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:messagebox.tpl' => 1,
   ),
 ),false)) {
-function content_6290be16f03296_47087329 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6295d73185ff88_16286886 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9194390256290be16edba12_99796784', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9753715736295d7317d2e18_88731178', "content");
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'default.tpl');
 }
 /* {block "content"} */
-class Block_9194390256290be16edba12_99796784 extends Smarty_Internal_Block
+class Block_9753715736295d7317d2e18_88731178 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_9194390256290be16edba12_99796784',
+    0 => 'Block_9753715736295d7317d2e18_88731178',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -77,7 +77,7 @@ if (($_smarty_tpl->tpl_vars['action']->value == 'update')) {?>userEditDB<?php }?
 ">
                 <br/>
                 <label for="registered">Data Rejestracji</label>
-                <input id="registered" type="date" placeholder="YYYY-MM-DD" name="registered" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['form']->value->registered ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+                <input id="registered" type="date" placeholder="YYYY-MM-DD" name="registered" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['form']->value->registered ?? null)===null||$tmp==='' ? date('Y-m-d') ?? null : $tmp);?>
 ">
                 <br/>
                 <?php if (($_smarty_tpl->tpl_vars['action']->value == 'add')) {?>

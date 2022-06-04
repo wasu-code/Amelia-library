@@ -29,7 +29,7 @@
                 <input id="surname" type="text" placeholder="nazwisko" name="surname" value="{$form->surname|default:''}">
                 <br/>
                 <label for="registered">Data Rejestracji</label>
-                <input id="registered" type="date" placeholder="YYYY-MM-DD" name="registered" value="{$form->registered|default:''}">
+                <input id="registered" type="date" placeholder="YYYY-MM-DD" name="registered" value="{$form->registered|default: date('Y-m-d')}">
                 <br/>
                 {if ($action=='add')}
                     <label for="pass">Hasło</label>

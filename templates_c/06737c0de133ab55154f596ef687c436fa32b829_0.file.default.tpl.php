@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-05-31 10:13:49
+/* Smarty version 4.1.0, created on 2022-05-31 10:02:44
   from 'D:\xampp\htdocs\amelia\app\views\templates\default.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_6295ce3d7235e9_99530130',
+  'unifunc' => 'content_6295cba482f403_55539097',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6295ce3d7235e9_99530130 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6295cba482f403_55539097 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -61,7 +61,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16672571536295ce3d6f4fa6_38411426', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2569021046295cba47e3920_66451027', "content");
 ?>
 
 
@@ -70,19 +70,19 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16672571536295ce3d
 <div class="footer">
     <hr/>
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20365296536295ce3d6faa26_32936513', "footer");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16944092616295cba47e9044_63556373', "footer");
 ?>
 
 </div>
 </body>
 </html><?php }
 /* {block "content"} */
-class Block_16672571536295ce3d6f4fa6_38411426 extends Smarty_Internal_Block
+class Block_2569021046295cba47e3920_66451027 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_16672571536295ce3d6f4fa6_38411426',
+    0 => 'Block_2569021046295cba47e3920_66451027',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -92,12 +92,12 @@ ERR: template didn't receive content<?php
 }
 /* {/block "content"} */
 /* {block "footer"} */
-class Block_20365296536295ce3d6faa26_32936513 extends Smarty_Internal_Block
+class Block_16944092616295cba47e9044_63556373 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'footer' => 
   array (
-    0 => 'Block_20365296536295ce3d6faa26_32936513',
+    0 => 'Block_16944092616295cba47e9044_63556373',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
