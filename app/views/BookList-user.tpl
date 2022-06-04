@@ -4,14 +4,18 @@
     {include file='messagebox.tpl'}
 
     <form action="{$conf->app_root}/listBooks" method="post">
-        <legend>Opcje wyszukiwania</legend>
         <fieldset>
+            <legend>Opcje wyszukiwania</legend>
+            <label for="sf_title">Tytuł:</label>
             <input type="text" placeholder="tytuł" name="sf_title" value="{$SearchForm->title|default:''}" />
-            <!--input type="text" placeholder="imie" name="sf_name" value="{$SearchForm->name|default:''}" />
-            <input type="text" placeholder="nazwisko" name="sf_surname" value="{$SearchForm->surname|default:''}" /-->
-            <button type="submit" >Filtruj</button>
+            <label for="limit">Ilość wyników na stronę:</label>
+            <input type="text" class="intinput" placeholder="tytuł" name="limit" value="{$limit|default:'10'}" />
+            <button type="submit" onclick="document.getElementById('pageNo').value=0" >Filtruj</button>
         </fieldset>
         <br/>
+        <button onclick="document.getElementById('pageNo').value={$page-1}" type="submit">«</button> 
+            page: <input type="text" class="intinput" placeholder="strona" name="page" id="pageNo" value="{$page|default:0}" />  
+        {if count($lista)>=$limit}<button onclick="document.getElementById('pageNo').value={$page+1}" type="submit">»</button>{/if}
     </form>
     
     <table cellpadding="5">
@@ -36,5 +40,6 @@
             </tr>
         {/foreach}
     </table>
+    {if count($lista)<$limit}Osiągnięto koniec listy{/if}
 
 {/block}

@@ -16,8 +16,8 @@ use app\forms\searchForm;
 class BookListCtrl
 {
     private $form;
-    private $currentPage;
-    private $recordsLimit = 2;
+    //private $currentPage = 0;
+    //private $recordsLimit = 2;
 
     public function __construct()
     {
@@ -28,11 +28,21 @@ class BookListCtrl
         $search_params = [];
         $v = new Validator();
         $this->form->title = $v->validateFromPost("sf_title");
-
         if ( isset($this->form->title) && strlen($this->form->title) > 0) {
 			$search_params['title[~]'] = $this->form->title;
 		}
-        
+
+        $currentPage = 0;
+        $recordsLimit = 2;
+        $currentPage = $v->validateFromPost("page",["int" => true]);
+        $recordsLimit = $v->validateFromPost("limit",["int" => true]);
+        if ($currentPage < 0 || !is_int($currentPage)) {
+			$currentPage = 0;
+		}
+        if ($recordsLimit < 1 || !is_int($recordsLimit)) {
+            $recordsLimit = 1;
+        }
+
         $num_params = sizeof($search_params);
 		if ($num_params > 1) {
 			$where = [ "AND" => &$search_params ];
@@ -41,6 +51,7 @@ class BookListCtrl
 		}
 		//dodanie frazy sortującej
 		$where ["ORDER"] = "title";
+        $where ["LIMIT"] = [$currentPage*$recordsLimit,$recordsLimit];
 
 
 
@@ -53,6 +64,8 @@ class BookListCtrl
         }
         App::getSmarty()->assign("SearchForm", $this->form);
         App::getSmarty()->assign("lista", $records);
+        App::getSmarty()->assign("page", $currentPage);
+        App::getSmarty()->assign("limit", $recordsLimit);
         if(RoleUtils::inRole("user")) {
             App::getSmarty()->display("BookList-user.tpl");  
         } else if (RoleUtils::inRole("mod")) {

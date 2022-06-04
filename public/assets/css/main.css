@@ -51,6 +51,11 @@ body {
     padding-bottom: 0.5em;
 }
 
+.intinput {
+    width:3em;
+    text-align:center;
+}
+
 
 /*MessageBox*/
 .alert {
