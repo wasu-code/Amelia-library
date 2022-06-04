@@ -6,5 +6,6 @@ class SearchForm {
 	public $title;
     public $name;
     public $surname;
+    public $login;
 }
 ?>

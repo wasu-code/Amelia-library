@@ -9,7 +9,7 @@
             <label for="sf_title">Tytuł:</label>
             <input type="text" placeholder="tytuł" name="sf_title" value="{$SearchForm->title|default:''}" />
             <label for="limit">Ilość wyników na stronę:</label>
-            <input type="text" class="intinput" placeholder="tytuł" name="limit" value="{$limit|default:'10'}" />
+            <input type="text" class="intinput" name="limit" value="{$limit|default:'10'}" />
             <button type="submit" onclick="document.getElementById('pageNo').value=0" >Filtruj</button>
         </fieldset>
         <br/>

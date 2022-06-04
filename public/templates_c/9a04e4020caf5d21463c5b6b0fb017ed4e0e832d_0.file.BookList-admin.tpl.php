@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-06-04 11:44:22
+/* Smarty version 4.1.0, created on 2022-06-04 11:58:11
   from 'D:\xampp\htdocs\amelia\app\views\BookList-admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_629b29761716f2_75005495',
+  'unifunc' => 'content_629b2cb3eb7985_62797771',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9a04e4020caf5d21463c5b6b0fb017ed4e0e832d' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\BookList-admin.tpl',
-      1 => 1654335859,
+      1 => 1654336660,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:messagebox.tpl' => 1,
   ),
 ),false)) {
-function content_629b29761716f2_75005495 (Smarty_Internal_Template $_smarty_tpl) {
+function content_629b2cb3eb7985_62797771 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1743580288629b29760ed317_81646344', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_609610332629b2cb3e0ff90_85064379', "content");
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'default.tpl');
 }
 /* {block "content"} */
-class Block_1743580288629b29760ed317_81646344 extends Smarty_Internal_Block
+class Block_609610332629b2cb3e0ff90_85064379 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_1743580288629b29760ed317_81646344',
+    0 => 'Block_609610332629b2cb3e0ff90_85064379',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -54,7 +54,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
             <input type="text" placeholder="tytuł" name="sf_title" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['SearchForm']->value->title ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 " />
             <label for="limit">Ilość wyników na stronę:</label>
-            <input type="text" class="intinput" placeholder="tytuł" name="limit" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['limit']->value ?? null)===null||$tmp==='' ? '10' ?? null : $tmp);?>
+            <input type="text" class="intinput" name="limit" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['limit']->value ?? null)===null||$tmp==='' ? '10' ?? null : $tmp);?>
 " />
             <button type="submit" onclick="document.getElementById('pageNo').value=0" >Filtruj</button>
         </fieldset>

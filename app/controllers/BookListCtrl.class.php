@@ -9,20 +9,20 @@ use core\Utils;
 use core\Validator;
 //use core\SessionUtils;
 use core\RoleUtils;
-use app\forms\searchForm;
+use app\forms\SearchForm;
 
 ////
 
 class BookListCtrl
 {
     private $form;
-    //private $currentPage = 0;
-    //private $recordsLimit = 2;
 
     public function __construct()
     {
         $this->form = new SearchForm();
     }
+
+    ////
 
     public function action_listBooks() {
         $search_params = [];
@@ -40,7 +40,7 @@ class BookListCtrl
 			$currentPage = 0;
 		}
         if ($recordsLimit < 1 || !is_int($recordsLimit)) {
-            $recordsLimit = 1;
+            $recordsLimit = 10;
         }
 
         $num_params = sizeof($search_params);

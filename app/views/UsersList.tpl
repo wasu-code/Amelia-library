@@ -3,6 +3,22 @@
 {block name="content"}
     {include file='messagebox.tpl'}
 
+    <form action="{$conf->app_root}/listUsers" method="post">
+        <fieldset>
+            <legend>Opcje wyszukiwania</legend>
+            <label for="sf_login">Login:</label>
+            <input type="text" placeholder="login" name="sf_login" value="{$SearchForm->login|default:''}" />
+            <label for="limit">Ilość wyników na stronę:</label>
+            <input type="text" class="intinput" name="limit" value="{$limit|default:10}" />
+            <button type="submit" onclick="document.getElementById('pageNo').value=0" >Filtruj</button>
+        </fieldset>
+        <br/>
+        <button onclick="document.getElementById('pageNo').value={$page-1}" type="submit">«</button> 
+            page: <input type="text" class="intinput" onkeydown="return event.key != 'Enter';" placeholder="strona" name="page" id="pageNo" value="{$page|default:0}" /> 
+            <button type="submit">GO!</button> 
+        {if count($lista)>=$limit}<button onclick="document.getElementById('pageNo').value={$page+1}" type="submit">»</button>{/if}
+    </form>
+
     <table cellpadding="5">
         <tr>
             <th class="hidden">Id</th>
@@ -27,5 +43,6 @@
             </tr>
         {/foreach}
     </table>
+    {if count($lista)<$limit}Osiągnięto koniec listy{/if}
 
 {/block}

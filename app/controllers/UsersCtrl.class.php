@@ -10,24 +10,66 @@ use core\Validator;
 use core\SessionUtils;
 use core\RoleUtils;
 use app\forms\PersonEditForm;
+use app\forms\SearchForm;
 
 ////
 
 class UsersCtrl
 {
     private $form;
+    private $Sform;
 
     public function __construct()
     {
         $this->form = new PersonEditForm();
+        $this->Sform = new SearchForm();
     }
 
     ////
 
     public function action_listUsers()
     {
-        $records = App::getDB()->select("user", ["idUser", "login", "role", "registration_date", "firstName", "lastName", "Address_idAddress"],["ORDER" => "login"]);
+        $search_params = [];
+        $v = new Validator();
+        $this->Sform->login = $v->validateFromPost("sf_login");
+        if ( isset($this->Sform->login) && strlen($this->Sform->login) > 0) {
+			$search_params['login[~]'] = $this->Sform->login;
+		}
+
+        $currentPage = 0;
+        $recordsLimit = 2;
+        $currentPage = $v->validateFromPost("page",["int" => true]);
+        $recordsLimit = $v->validateFromPost("limit",["int" => true]);
+        if ($currentPage < 0 || !is_int($currentPage)) {
+			$currentPage = 0;
+		}
+        if ($recordsLimit < 1 || !is_int($recordsLimit)) {
+            $recordsLimit = 10;
+        }
+
+        $num_params = sizeof($search_params);
+		if ($num_params > 1) {
+			$where = [ "AND" => &$search_params ];
+		} else {
+			$where = &$search_params;
+		}
+		//dodanie frazy sortującej
+		$where ["ORDER"] = "login";
+        $where ["LIMIT"] = [$currentPage*$recordsLimit,$recordsLimit];
+
+
+        try {
+            $records = App::getDB()->select("user", ["idUser", "login", "role", "registration_date", "firstName", "lastName", "Address_idAddress"],$where);
+        } catch (\PDOException $e) {
+            Utils::addErrorMessage('Wystąpił błąd podczas odczytu z bazy');
+            if (App::getConf()->debug)
+                Utils::addErrorMessage($e->getMessage());
+        }
+        
+        App::getSmarty()->assign("SearchForm", $this->Sform);
         App::getSmarty()->assign("lista", $records);
+        App::getSmarty()->assign("page", $currentPage);
+        App::getSmarty()->assign("limit", $recordsLimit);
         App::getSmarty()->display("UsersList.tpl");
     }
 
