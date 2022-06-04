@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-06-04 17:50:15
+/* Smarty version 4.1.0, created on 2022-06-05 00:59:21
   from 'D:\xampp\htdocs\amelia\app\views\BookList-table.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_629b7f3779c913_83059401',
+  'unifunc' => 'content_629be3c908f638_09020190',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2f78acb2c610d825bf478ccd23acc0d6d987f89e' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\BookList-table.tpl',
-      1 => 1654357810,
+      1 => 1654381802,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_629b7f3779c913_83059401 (Smarty_Internal_Template $_smarty_tpl) {
-?><form id="search-form" onsubmit="ajaxPostForm('search-form','<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+function content_629be3c908f638_09020190 (Smarty_Internal_Template $_smarty_tpl) {
+?>    <form id="search-form" onsubmit="ajaxPostForm('search-form','<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /listBooks_table','table'); return false;">
         <fieldset>
             <legend>Opcje wyszukiwania</legend>

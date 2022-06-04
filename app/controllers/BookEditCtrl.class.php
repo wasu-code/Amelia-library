@@ -143,12 +143,17 @@ class BookEditCtrl
         }
     }
 
-    public function action_bookEdit() {
-
+    public function action_bookEdit() {//++
+        Utils::addWarningMessage('Ta funkcja nie jest jeszcze dostępna. Zostanie ona dodana wkrótce TM');
+        SessionUtils::storeMessages();
+        App::getRouter()->redirectTo("listBooks");
     }
 
-    public function action_bookEditDB() {
+    public function action_bookEditDB() {//++
         //App::getSmarty()->display("messagebox.tpl");
+        Utils::addWarningMessage('Ta funkcja nie jest jeszcze dostępna. Zostanie ona dodana wkrótce TM');
+        SessionUtils::storeMessages();
+        App::getRouter()->redirectTo("listBooks");
     }
 
 

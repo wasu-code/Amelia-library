@@ -28,6 +28,7 @@ Utils::addRoute('userDelete', 'UsersCtrl',["mod","admin"]); #OK
 Utils::addRoute('listBooks', 'BookListCtrl'); #OK - bez stronicowania
 Utils::addRoute('listBooks_table', 'BookListCtrl'); 
 Utils::addRoute('listReserved', 'BookListCtrl', ['mod']); #K - brak wyszukiwania
+Utils::addRoute('listReserved_table', 'BookListCtrl', ['mod']);
 Utils::addRoute('listRented', 'BookListCtrl', ['mod']); #K - brak wyszukiwania
 //Utils::addRoute('bookDetails', 'BookListCtrl');
 //Utils::addRoute('authorDetails', 'BookListCtrl');
@@ -35,8 +36,8 @@ Utils::addRoute('listRented', 'BookListCtrl', ['mod']); #K - brak wyszukiwania
 Utils::addRoute('bookAdd', 'BookEditCtrl', ['admin']); #OK
 Utils::addRoute('bookAddDB', 'BookEditCtrl', ['admin']); #OK
 Utils::addRoute('bookDeleteDB', 'BookEditCtrl', ['admin']); #OK
-//Utils::addRoute('bookEdit', 'BookEditCtrl',["mod","admin"]);
-//Utils::addRoute('bookEditDB', 'BookEditCtrl', ['mod','admin']);
+Utils::addRoute('bookEdit', 'BookEditCtrl',["mod","admin"]);
+Utils::addRoute('bookEditDB', 'BookEditCtrl', ['mod','admin']);
 
 Utils::addRoute('bookReserve', 'BookStatusCtrl', ['user']); #K
 Utils::addRoute('bookRent', 'BookStatusCtrl', ['mod']); #K

@@ -1,4 +1,4 @@
-<form id="search-form" onsubmit="ajaxPostForm('search-form','{$conf->app_root}/listBooks_table','table'); return false;">
+    <form id="search-form" onsubmit="ajaxPostForm('search-form','{$conf->app_root}/listBooks_table','table'); return false;">
         <fieldset>
             <legend>Opcje wyszukiwania</legend>
             <label for="sf_title">Tytuł:</label>

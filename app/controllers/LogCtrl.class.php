@@ -72,7 +72,8 @@ class LogCtrl {
         $records = App::getDB()->select("user", ["pass", "role"],["login" => $this->form->login]);
         if (isset($records[0]["pass"])) {
             if ($this->form->pass == $records[0]["pass"]) {//isset
-               RoleUtils::addRole($records[0]["role"]);
+                RoleUtils::addRole($records[0]["role"]);
+                $_SESSION['role'] = $records[0]["role"];
                 $_SESSION['loggedAs'] = $this->form->login;
             } else {
                 Utils::addErrorMessage('Niepoprawny login lub hasło');
