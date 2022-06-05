@@ -1,27 +1,31 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-06-04 17:35:12
+/* Smarty version 4.1.0, created on 2022-06-05 13:36:36
   from 'D:\xampp\htdocs\amelia\app\views\UsersList-table.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_629b7bb08567c3_93442709',
+  'unifunc' => 'content_629c9544501140_42684035',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f74fab72ea95f36afa42ed9eeb673343774053c4' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\UsersList-table.tpl',
-      1 => 1654356906,
+      1 => 1654428992,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:messagebox.tpl' => 1,
   ),
 ),false)) {
-function content_629b7bb08567c3_93442709 (Smarty_Internal_Template $_smarty_tpl) {
-?><form id="search-form" onsubmit="ajaxPostForm('search-form','<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+function content_629c9544501140_42684035 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_subTemplateRender('file:messagebox.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+<form id="search-form" onsubmit="ajaxPostForm('search-form','<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /listUsers_table','table'); return false;">
 <fieldset>
     <legend>Opcje wyszukiwania</legend>

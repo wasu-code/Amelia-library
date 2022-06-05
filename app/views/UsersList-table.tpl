@@ -1,3 +1,5 @@
+{include file='messagebox.tpl'}
+
 <form id="search-form" onsubmit="ajaxPostForm('search-form','{$conf->app_root}/listUsers_table','table'); return false;">
 <fieldset>
     <legend>Opcje wyszukiwania</legend>

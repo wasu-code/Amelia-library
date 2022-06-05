@@ -1,3 +1,6 @@
+  
+    {include file='messagebox.tpl'}  
+    
     <form id="search-form" onsubmit="ajaxPostForm('search-form','{$conf->app_root}/listBooks_table','table'); return false;">
         <fieldset>
             <legend>Opcje wyszukiwania</legend>
@@ -23,7 +26,10 @@
             <th>Ilość dostepnych</th>
             <!--th class="hidden">Adress ID</th-->
         </tr>
+        
+        {assign var=incid value=0}
         {foreach $lista as $wiersz}
+            
             <tr>
                 <td class="hidden">{$wiersz["idBook"]}</td>
                 <td>{$wiersz["title"]}</td>
@@ -38,7 +44,7 @@
                 {if $role=="mod"}
                     <td><a href="{$conf->app_root}/bookEdit/{$wiersz["idBook"]}"><button>Edytuj</button></a></td>
                     <td>
-                        <form method="post" action="{$conf->app_root}/bookRent/{$wiersz["idBook"]}"> 
+                        <form id="rent-form{$incid}" onsubmit="ajaxPostForm('rent-form{$incid++}','{$conf->app_root}/bookRent/{$wiersz["idBook"]}','table'); return false;"> 
                             <input type="text" placeholder="login" name="login"/>
                             <input type="submit" value="Wyporzycz"/>
                         </form>

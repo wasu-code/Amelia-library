@@ -1,27 +1,32 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-06-05 00:59:21
+/* Smarty version 4.1.0, created on 2022-06-05 14:19:02
   from 'D:\xampp\htdocs\amelia\app\views\BookList-table.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_629be3c908f638_09020190',
+  'unifunc' => 'content_629c9f361b3c88_91902877',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2f78acb2c610d825bf478ccd23acc0d6d987f89e' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\BookList-table.tpl',
-      1 => 1654381802,
+      1 => 1654431538,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:messagebox.tpl' => 1,
   ),
 ),false)) {
-function content_629be3c908f638_09020190 (Smarty_Internal_Template $_smarty_tpl) {
-?>    <form id="search-form" onsubmit="ajaxPostForm('search-form','<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+function content_629c9f361b3c88_91902877 (Smarty_Internal_Template $_smarty_tpl) {
+?>  
+    <?php $_smarty_tpl->_subTemplateRender('file:messagebox.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>  
+    
+    <form id="search-form" onsubmit="ajaxPostForm('search-form','<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /listBooks_table','table'); return false;">
         <fieldset>
             <legend>Opcje wyszukiwania</legend>
@@ -52,12 +57,15 @@ function content_629be3c908f638_09020190 (Smarty_Internal_Template $_smarty_tpl)
             <th>Ilość dostepnych</th>
             <!--th class="hidden">Adress ID</th-->
         </tr>
+        
+        <?php $_smarty_tpl->_assignInScope('incid', 0);?>
         <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['lista']->value, 'wiersz');
 $_smarty_tpl->tpl_vars['wiersz']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['wiersz']->value) {
 $_smarty_tpl->tpl_vars['wiersz']->do_else = false;
 ?>
+            
             <tr>
                 <td class="hidden"><?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idBook"];?>
 </td>
@@ -83,9 +91,11 @@ $_smarty_tpl->tpl_vars['wiersz']->do_else = false;
 /bookEdit/<?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idBook"];?>
 "><button>Edytuj</button></a></td>
                     <td>
-                        <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+                        <form id="rent-form<?php echo $_smarty_tpl->tpl_vars['incid']->value;?>
+" onsubmit="ajaxPostForm('rent-form<?php echo $_smarty_tpl->tpl_vars['incid']->value++;?>
+','<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /bookRent/<?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idBook"];?>
-"> 
+','table'); return false;"> 
                             <input type="text" placeholder="login" name="login"/>
                             <input type="submit" value="Wyporzycz"/>
                         </form>

@@ -242,22 +242,25 @@ class UsersCtrl
             if (RoleUtils::inRole("user")) {
                 Utils::addErrorMessage("Brak Uprawnień do usunięcia roli nadrzędnej");
             }
-            try {
-                if (!App::getMessages()->isError()) {
+            if (!App::getMessages()->isError()) {
+                try {
+                    //usuń powiązane transakcje
+                    App::getDB()->delete("transaction", ["user_idUser" => $this->form->id]);
                     //usuń
                     App::getDB()->delete("user", ["idUser" => $this->form->id]);
                     //info
                     Utils::addInfoMessage("Usunięcie powiodło się");
                     SessionUtils::storeMessages();
                     //App::getRouter()->redirectTo("listUsers");//??
-                } else {
-                    SessionUtils::storeMessages();
-                    //App::getRouter()->redirectTo("listUsers");//??
+                } 
+                    catch (\PDOException $e) {
+                    Utils::addErrorMessage('Wystąpił błąd podczas usuwania osoby');
+                    if (App::getConf()->debug)
+                        Utils::addErrorMessage($e->getMessage());
                 }
-            } catch (\PDOException $e) {
-                Utils::addErrorMessage('Wystąpił błąd podczas usuwania osoby');
-                if (App::getConf()->debug)
-                    Utils::addErrorMessage($e->getMessage());
+            } else {
+                SessionUtils::storeMessages();
+                //App::getRouter()->redirectTo("listUsers");//??
             }
             $this->listing();
             App::getSmarty()->display("UsersList-table.tpl");

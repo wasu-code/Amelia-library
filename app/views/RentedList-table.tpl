@@ -1,3 +1,6 @@
+
+    {include file='messagebox.tpl'}
+    
 <form id="search-form" onsubmit="ajaxPostForm('search-form','{$conf->app_root}/listRented_table','table'); return false;">
     <label for="limit">Ilość wyników na stronę:</label>
     <input type="text" class="intinput" name="limit" value="{$limit|default:'10'}" />
@@ -24,7 +27,7 @@
         <td>{$wiersz["login"]}</td>
         <td>{$wiersz["date"]}</td>
 
-        <td><a href="{$conf->app_root}/bookReturn/{$wiersz["idTransaction"]}"><button>Oznacz jako zwróconą</button></a></td>
+        <td><button onclick="ajaxPostForm('search-form','{$conf->app_root}/bookReturn/{$wiersz["idTransaction"]}','table')">Oznacz jako zwróconą</button></td>
         
     </tr>
 {/foreach}

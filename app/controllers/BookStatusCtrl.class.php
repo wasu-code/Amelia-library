@@ -102,11 +102,11 @@ class BookStatusCtrl
 
         if (App::getMessages()->isError()) { //gdy są błędy wróć do widoku
             SessionUtils::storeMessages();
-            App::getRouter()->redirectTo("listBooka");
+            App::getRouter()->redirectTo("listBooks_table");
         } else { 
             Utils::addInfoMessage("Wyporzyczono pomyślnie");
             SessionUtils::storeMessages();
-            App::getRouter()->redirectTo("listBooks");
+            App::getRouter()->redirectTo("listBooks_table");
         }
     }
 
@@ -139,7 +139,7 @@ class BookStatusCtrl
             Utils::addInfoMessage("Wyporzyczono pomyślnie");
         } 
         SessionUtils::storeMessages();
-        App::getRouter()->redirectTo("listReserved");
+        App::getRouter()->redirectTo("listReserved_table");
         
     }
 
@@ -180,11 +180,11 @@ class BookStatusCtrl
         }
 
         //
-        if (App::getMessages()->isError()) { 
+        if (!App::getMessages()->isError()) { 
             Utils::addInfoMessage("Zwrócono pomyślnie");
         }
         SessionUtils::storeMessages();
-        App::getRouter()->redirectTo("listRented");
+        App::getRouter()->redirectTo("listRented_table");
     }
 
     ////

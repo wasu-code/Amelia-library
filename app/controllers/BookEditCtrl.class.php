@@ -108,7 +108,7 @@ class BookEditCtrl
 
         ////
         if (App::getMessages()->isError()) { //gdy są błędy wróć do widoku
-            App::getSmarty()->assign("form", $this->form);//xx bo ajax
+            //App::getSmarty()->assign("form", $this->form);//xx bo ajax
             App::getSmarty()->assign("action", "add");
             //App::getSmarty()->display("BookEdit.tpl");
             App::getSmarty()->display("messagebox.tpl");
@@ -123,10 +123,12 @@ class BookEditCtrl
     public function action_bookDeleteDB() {
         if ($this->validateID()) {
             try {
-                //usuń powiązanie
-                App::getDB()->delete("Book_has_Author", ["Book_idBook" => $this->form->id]);
+                //usuń powiązane transakcje
+                App::getDB()->delete("transaction", ["book_idBook" => $this->form->id]);
+                //usuń powiązanie z autorem
+                App::getDB()->delete("book_has_author", ["book_idBook" => $this->form->id]);
                 //usuń
-                App::getDB()->delete("Book", ["idBook" => $this->form->id]);
+                App::getDB()->delete("book", ["idBook" => $this->form->id]);
                 //info
                 Utils::addInfoMessage("Usunięcie powiodło się");
             } catch (\PDOException $e) {

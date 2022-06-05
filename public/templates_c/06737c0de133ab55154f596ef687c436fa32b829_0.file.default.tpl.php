@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-06-04 19:29:03
+/* Smarty version 4.1.0, created on 2022-06-05 13:26:15
   from 'D:\xampp\htdocs\amelia\app\views\templates\default.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_629b965fb326d3_66923501',
+  'unifunc' => 'content_629c92d7248639_22034309',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '06737c0de133ab55154f596ef687c436fa32b829' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\templates\\default.tpl',
-      1 => 1654363738,
+      1 => 1654428373,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_629b965fb326d3_66923501 (Smarty_Internal_Template $_smarty_tpl) {
+function content_629c92d7248639_22034309 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -55,8 +55,6 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /userAdd">userAdd</a></li>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/userEdit">userEdit</a></li>
-                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /listBooks">listBooks</a></li>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /bookAdd">bookAdd</a></li>
@@ -66,8 +64,6 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 /listUsers">listUsers</a></li>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /userAdd">userAdd</a></li>
-                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/userEdit">userEdit</a></li>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /listBooks">listBooks</a></li>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
@@ -98,7 +94,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_371471175629b965fb21230_81135722', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1233090903629c92d7235197_23318387', "content");
 ?>
 
 
@@ -107,19 +103,19 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_371471175629b965fb
 <div class="footer">
     <hr/>
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_427700578629b965fb22ab1_42599244', "footer");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2084233075629c92d7237d48_10471211', "footer");
 ?>
 
 </div>
 </body>
 </html><?php }
 /* {block "content"} */
-class Block_371471175629b965fb21230_81135722 extends Smarty_Internal_Block
+class Block_1233090903629c92d7235197_23318387 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_371471175629b965fb21230_81135722',
+    0 => 'Block_1233090903629c92d7235197_23318387',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -129,12 +125,12 @@ ERR: template didn't receive content<?php
 }
 /* {/block "content"} */
 /* {block "footer"} */
-class Block_427700578629b965fb22ab1_42599244 extends Smarty_Internal_Block
+class Block_2084233075629c92d7237d48_10471211 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'footer' => 
   array (
-    0 => 'Block_427700578629b965fb22ab1_42599244',
+    0 => 'Block_2084233075629c92d7237d48_10471211',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

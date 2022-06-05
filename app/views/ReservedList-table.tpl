@@ -1,3 +1,5 @@
+
+    {include file='messagebox.tpl'}
 <form id="search-form" onsubmit="ajaxPostForm('search-form','{$conf->app_root}/listReserved_table','table'); return false;">
 <fieldset>
     <legend>Opcje wyszukiwania</legend>
@@ -32,7 +34,7 @@
         <td>{$wiersz["login"]}</td>
         <td>{$wiersz["date"]}</td>
 
-        <td><a href="{$conf->app_root}/bookRentReserved/{$wiersz["idTransaction"]}"><button>Wyporzycz i usuń rezerwację</button></a></td>
+        <td><button onclick="ajaxPostForm('search-form','{$conf->app_root}/bookRentReserved/{$wiersz["idTransaction"]}','table')">Wyporzycz i usuń rezerwację</button></td>
         
     </tr>
 {/foreach}

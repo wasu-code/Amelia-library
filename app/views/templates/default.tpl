@@ -20,14 +20,12 @@
                 {if $smarty.session.role=='admin'}
                     <li><a href="{$conf->app_root}/listUsers">listUsers</a></li>
                     <li><a href="{$conf->app_root}/userAdd">userAdd</a></li>
-                    <li><a href="{$conf->app_root}/userEdit">userEdit</a></li>
                     <li><a href="{$conf->app_root}/listBooks">listBooks</a></li>
                     <li><a href="{$conf->app_root}/bookAdd">bookAdd</a></li>
                 {/if}
                 {if $smarty.session.role=='mod'}
                     <li><a href="{$conf->app_root}/listUsers">listUsers</a></li>
                     <li><a href="{$conf->app_root}/userAdd">userAdd</a></li>
-                    <li><a href="{$conf->app_root}/userEdit">userEdit</a></li>
                     <li><a href="{$conf->app_root}/listBooks">listBooks</a></li>
                     <li><a href="{$conf->app_root}/listReserved">listReserved</a></li>
                     <li><a href="{$conf->app_root}/listRented">listRented</a></li>

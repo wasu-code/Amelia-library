@@ -1,7 +1,6 @@
 {extends file='default.tpl'}
 
 {block name="content"}
-    {include file='messagebox.tpl'}
 
     <div style="position: sticky;">
         <input id="search" type="text" placeholder="Znajdź na tej stronie"/>

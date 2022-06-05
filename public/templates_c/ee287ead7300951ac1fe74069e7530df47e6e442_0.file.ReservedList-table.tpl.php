@@ -1,27 +1,31 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-06-05 01:18:39
+/* Smarty version 4.1.0, created on 2022-06-05 14:23:07
   from 'D:\xampp\htdocs\amelia\app\views\ReservedList-table.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_629be84fdc89b2_90488257',
+  'unifunc' => 'content_629ca02ba6a981_92599424',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ee287ead7300951ac1fe74069e7530df47e6e442' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\ReservedList-table.tpl',
-      1 => 1654384595,
+      1 => 1654431785,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:messagebox.tpl' => 1,
   ),
 ),false)) {
-function content_629be84fdc89b2_90488257 (Smarty_Internal_Template $_smarty_tpl) {
-?><form id="search-form" onsubmit="ajaxPostForm('search-form','<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+function content_629ca02ba6a981_92599424 (Smarty_Internal_Template $_smarty_tpl) {
+?>
+    <?php $_smarty_tpl->_subTemplateRender('file:messagebox.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+<form id="search-form" onsubmit="ajaxPostForm('search-form','<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /listReserved_table','table'); return false;">
 <fieldset>
     <legend>Opcje wyszukiwania</legend>
@@ -71,9 +75,9 @@ $_smarty_tpl->tpl_vars['wiersz']->do_else = false;
         <td><?php echo $_smarty_tpl->tpl_vars['wiersz']->value["date"];?>
 </td>
 
-        <td><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+        <td><button onclick="ajaxPostForm('search-form','<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /bookRentReserved/<?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idTransaction"];?>
-"><button>Wyporzycz i usuń rezerwację</button></a></td>
+','table')">Wyporzycz i usuń rezerwację</button></td>
         
     </tr>
 <?php

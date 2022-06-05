@@ -1,27 +1,32 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-06-05 03:14:43
+/* Smarty version 4.1.0, created on 2022-06-05 13:55:19
   from 'D:\xampp\htdocs\amelia\app\views\RentedList-table.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_629c0383e4c1b5_31886431',
+  'unifunc' => 'content_629c99a7642675_21641622',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '44e95fbcd5cebd2122e4d3e1018781a06e38bf4e' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\RentedList-table.tpl',
-      1 => 1654391682,
+      1 => 1654430114,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:messagebox.tpl' => 1,
   ),
 ),false)) {
-function content_629c0383e4c1b5_31886431 (Smarty_Internal_Template $_smarty_tpl) {
-?><form id="search-form" onsubmit="ajaxPostForm('search-form','<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+function content_629c99a7642675_21641622 (Smarty_Internal_Template $_smarty_tpl) {
+?>
+    <?php $_smarty_tpl->_subTemplateRender('file:messagebox.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+    
+<form id="search-form" onsubmit="ajaxPostForm('search-form','<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /listRented_table','table'); return false;">
     <label for="limit">Ilość wyników na stronę:</label>
     <input type="text" class="intinput" name="limit" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['limit']->value ?? null)===null||$tmp==='' ? '10' ?? null : $tmp);?>
@@ -61,9 +66,9 @@ $_smarty_tpl->tpl_vars['wiersz']->do_else = false;
         <td><?php echo $_smarty_tpl->tpl_vars['wiersz']->value["date"];?>
 </td>
 
-        <td><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
+        <td><button onclick="ajaxPostForm('search-form','<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
 /bookReturn/<?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idTransaction"];?>
-"><button>Oznacz jako zwróconą</button></a></td>
+','table')">Oznacz jako zwróconą</button></td>
         
     </tr>
 <?php
