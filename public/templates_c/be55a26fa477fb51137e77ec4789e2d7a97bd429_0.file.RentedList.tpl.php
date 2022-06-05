@@ -1,43 +1,44 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-06-04 18:33:04
+/* Smarty version 4.1.0, created on 2022-06-05 03:15:54
   from 'D:\xampp\htdocs\amelia\app\views\RentedList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_629b8940ea7410_94238861',
+  'unifunc' => 'content_629c03ca87cab5_96560375',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'be55a26fa477fb51137e77ec4789e2d7a97bd429' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\RentedList.tpl',
-      1 => 1653747771,
+      1 => 1654391752,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:messagebox.tpl' => 1,
+    'file:RentedList-table.tpl' => 1,
   ),
 ),false)) {
-function content_629b8940ea7410_94238861 (Smarty_Internal_Template $_smarty_tpl) {
+function content_629c03ca87cab5_96560375 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_481721355629b8940e81d14_00209403', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2126410465629c03ca877c97_58111815', "content");
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'default.tpl');
 }
 /* {block "content"} */
-class Block_481721355629b8940e81d14_00209403 extends Smarty_Internal_Block
+class Block_2126410465629c03ca877c97_58111815 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_481721355629b8940e81d14_00209403',
+    0 => 'Block_2126410465629c03ca877c97_58111815',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -46,73 +47,15 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
     <?php $_smarty_tpl->_subTemplateRender('file:messagebox.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-    <!--form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/listBooks" method="post">
-        <legend>Opcje wyszukiwania</legend>
-        <fieldset>
-            <input type="text" placeholder="tytuł" name="sf_title" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['SearchForm']->value->title ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
-" />
-            <input type="text" placeholder="imie" name="sf_name" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['SearchForm']->value->name ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
-" />
-            <input type="text" placeholder="nazwisko" name="sf_surname" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['SearchForm']->value->surname ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
-" />
-            <button type="submit" >Filtruj</button>
-        </fieldset>
-        <br/>
-    </form-->
+    <div style="position: sticky;">
+        <input id="search" type="text" placeholder="Znajdź na tej stronie"/>
+        <button onclick="window.find(document.getElementById('search').value)">Szukaj</button>
+    </div>
     
-    <table cellpadding="5">
-        <tr>
-            <!--th class="hidden">Id</th-->
-            <th>Tytuł</th>
-            <th>Zarezerwowana przez</th>
-            <th>Dnia</th>
-            <!--th class="hidden">Adress ID</th-->
-        </tr>
-        <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['lista']->value, 'wiersz');
-$_smarty_tpl->tpl_vars['wiersz']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['wiersz']->value) {
-$_smarty_tpl->tpl_vars['wiersz']->do_else = false;
+    <div id="table">
+    <?php $_smarty_tpl->_subTemplateRender("file:RentedList-table.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-            <tr>
-                <td class="hidden"><?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idTransaction"];?>
-</td >
-                <td><?php echo $_smarty_tpl->tpl_vars['wiersz']->value["title"];?>
-</td>
-                <td><?php echo $_smarty_tpl->tpl_vars['wiersz']->value["login"];?>
-</td>
-                <td><?php echo $_smarty_tpl->tpl_vars['wiersz']->value["date"];?>
-</td>
-
-                <td><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/bookReturn/<?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idTransaction"];?>
-"><button>Oznacz jako zwróconą</button></a></td>
-                
-                <!--<td><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/bookReturn/<?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idTransaction"];?>
-"><button>Oznacz jako zwróconą</button></a></td>
-                -->
-                <!--td><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/bookEdit/<?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idBook"];?>
-">Edytuj</a></td>
-                <td><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/bookDeleteDB/<?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idBook"];?>
-">Usuń</a></td>
-                <td>
-                    <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/bookRent/<?php echo $_smarty_tpl->tpl_vars['wiersz']->value["idBook"];?>
-"> 
-                        <input type="text" placeholder="login" name="login"/>
-                        <input type="submit" value="Wyporzycz"/>
-                    </form>
-                </td-->
-                
-            </tr>
-        <?php
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-    </table>
+    </div>
 
 <?php
 }

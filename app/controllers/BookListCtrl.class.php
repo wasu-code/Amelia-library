@@ -168,7 +168,7 @@ class BookListCtrl
         App::getSmarty()->display("ReservedList-table.tpl");
     }
 
-    public function action_listRented() {
+    public function listingRented() {
         try {
             $records = [];
             $tList = App::getDB()->select("transaction",[
@@ -190,8 +190,24 @@ class BookListCtrl
             if (App::getConf()->debug)
                 Utils::addErrorMessage($e->getMessage());
         }
+        
+        $this->pagingControl();
+        if (sizeof($records)>$this->recordsLimit) {
+            $records = array_slice($records,$this->currentPage*$this->recordsLimit,$this->recordsLimit); //array,offset-start,length
+        }
         App::getSmarty()->assign("lista", $records);
+        //App::getSmarty()->display("RentedList.tpl");
+
+    }
+
+    public function action_listRented() {
+        $this->listingRented();
         App::getSmarty()->display("RentedList.tpl");
+    }
+
+    public function action_listRented_table() {
+        $this->listingRented();
+        App::getSmarty()->display("RentedList-table.tpl");
     }
 
     public function action_bookDetails() {

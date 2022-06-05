@@ -30,6 +30,7 @@ Utils::addRoute('listBooks_table', 'BookListCtrl');
 Utils::addRoute('listReserved', 'BookListCtrl', ['mod']); #K - brak wyszukiwania
 Utils::addRoute('listReserved_table', 'BookListCtrl', ['mod']);
 Utils::addRoute('listRented', 'BookListCtrl', ['mod']); #K - brak wyszukiwania
+Utils::addRoute('listRented_table', 'BookListCtrl', ['mod']);
 //Utils::addRoute('bookDetails', 'BookListCtrl');
 //Utils::addRoute('authorDetails', 'BookListCtrl');
 
