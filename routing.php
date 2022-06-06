@@ -47,6 +47,3 @@ Utils::addRoute('bookReturn', 'BookStatusCtrl', ['mod']); #K
 
 //TEST AREA
 Utils::addRoute('tst_view', 'HelloCtrl');//xx
-//Utils::addRoute('hello', 'HelloCtrl');
-Utils::addRoute('elo', 'HelloCtrl');
-Utils::addRoute('tst_transactions', 'BookListCtrl');

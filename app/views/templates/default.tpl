@@ -18,20 +18,20 @@
 
             {if isset($smarty.session.role)}
                 {if $smarty.session.role=='admin'}
-                    <li><a href="{$conf->app_root}/listUsers">listUsers</a></li>
-                    <li><a href="{$conf->app_root}/userAdd">userAdd</a></li>
-                    <li><a href="{$conf->app_root}/listBooks">listBooks</a></li>
-                    <li><a href="{$conf->app_root}/bookAdd">bookAdd</a></li>
+                    <li><a href="{$conf->app_root}/listUsers">Użytkownicy</a></li>
+                    <li><a href="{$conf->app_root}/userAdd">Dodaj Użytkownika</a></li>
+                    <li><a href="{$conf->app_root}/listBooks">Księgozbiór</a></li>
+                    <li><a href="{$conf->app_root}/bookAdd">Dodaj Książkę</a></li>
                 {/if}
                 {if $smarty.session.role=='mod'}
-                    <li><a href="{$conf->app_root}/listUsers">listUsers</a></li>
-                    <li><a href="{$conf->app_root}/userAdd">userAdd</a></li>
-                    <li><a href="{$conf->app_root}/listBooks">listBooks</a></li>
-                    <li><a href="{$conf->app_root}/listReserved">listReserved</a></li>
-                    <li><a href="{$conf->app_root}/listRented">listRented</a></li>
+                    <li><a href="{$conf->app_root}/listUsers">Użytkownicy</a></li>
+                    <li><a href="{$conf->app_root}/userAdd">Dodaj Użytkownika</a></li>
+                    <li><a href="{$conf->app_root}/listBooks">Księgozbiór</a></li>
+                    <li><a href="{$conf->app_root}/listReserved">Zarezerwowane</a></li>
+                    <li><a href="{$conf->app_root}/listRented">Wyporzyczone</a></li>
                 {/if}
                 {if $smarty.session.role=='user'}
-                    <li><a href="{$conf->app_root}/listBooks">listBooks</a></li>
+                    <li><a href="{$conf->app_root}/listBooks">Księgozbiór</a></li>
                 {/if}
             {/if}
 
@@ -55,20 +55,8 @@
 <div class="footer">
     <hr/>
     {block name="footer"}
-        <a href="{$conf->app_root}/listUsers">listUsers</a> | 
-        <a href="{$conf->app_root}/userAdd">userAdd</a> | 
-        <a href="{$conf->app_root}/userEdit">userEdit</a> | 
-        <a href="{$conf->app_root}/listBooks">listBooks</a> | 
-        <a href="{$conf->app_root}/bookAdd">bookAdd</a> | 
-        <a href="{$conf->app_root}/listReserved">listReserved</a> | 
-        <a href="{$conf->app_root}/listRented">listRented</a> | 
-        <a href="{$conf->app_root}/"></a> | 
-        <a href="{$conf->app_root}/"></a> | 
-        <a href="{$conf->app_root}/"></a> | 
-        <a href="{$conf->app_root}/"></a> | 
-        <a href="{$conf->app_root}/"></a> | 
-        <a href="{$conf->app_root}/"></a> | 
-        <a href="{$conf->app_root}/"></a> | 
+        <i>„Powiedz mi, jakie książki masz w domu, a powiem ci, kim jesteś.”<br/>
+        Jarosław Iwaszkiewicz</i>
     {/block}
 </div>
 </body>

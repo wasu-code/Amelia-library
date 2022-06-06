@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-06-05 13:26:15
+/* Smarty version 4.1.0, created on 2022-06-06 16:22:35
   from 'D:\xampp\htdocs\amelia\app\views\templates\default.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_629c92d7248639_22034309',
+  'unifunc' => 'content_629e0dab959435_14453626',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '06737c0de133ab55154f596ef687c436fa32b829' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\templates\\default.tpl',
-      1 => 1654428373,
+      1 => 1654525353,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_629c92d7248639_22034309 (Smarty_Internal_Template $_smarty_tpl) {
+function content_629e0dab959435_14453626 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -51,29 +51,29 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
             <?php if ((isset($_SESSION['role']))) {?>
                 <?php if ($_SESSION['role'] == 'admin') {?>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/listUsers">listUsers</a></li>
+/listUsers">Użytkownicy</a></li>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/userAdd">userAdd</a></li>
+/userAdd">Dodaj Użytkownika</a></li>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/listBooks">listBooks</a></li>
+/listBooks">Księgozbiór</a></li>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/bookAdd">bookAdd</a></li>
+/bookAdd">Dodaj Książkę</a></li>
                 <?php }?>
                 <?php if ($_SESSION['role'] == 'mod') {?>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/listUsers">listUsers</a></li>
+/listUsers">Użytkownicy</a></li>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/userAdd">userAdd</a></li>
+/userAdd">Dodaj Użytkownika</a></li>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/listBooks">listBooks</a></li>
+/listBooks">Księgozbiór</a></li>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/listReserved">listReserved</a></li>
+/listReserved">Zarezerwowane</a></li>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/listRented">listRented</a></li>
+/listRented">Wyporzyczone</a></li>
                 <?php }?>
                 <?php if ($_SESSION['role'] == 'user') {?>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/listBooks">listBooks</a></li>
+/listBooks">Księgozbiór</a></li>
                 <?php }?>
             <?php }?>
 
@@ -94,7 +94,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1233090903629c92d7235197_23318387', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_307817012629e0dab9562e8_03112176', "content");
 ?>
 
 
@@ -103,19 +103,19 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1233090903629c92d7
 <div class="footer">
     <hr/>
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2084233075629c92d7237d48_10471211', "footer");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_437811147629e0dab957ba4_29787557', "footer");
 ?>
 
 </div>
 </body>
 </html><?php }
 /* {block "content"} */
-class Block_1233090903629c92d7235197_23318387 extends Smarty_Internal_Block
+class Block_307817012629e0dab9562e8_03112176 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_1233090903629c92d7235197_23318387',
+    0 => 'Block_307817012629e0dab9562e8_03112176',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -125,45 +125,19 @@ ERR: template didn't receive content<?php
 }
 /* {/block "content"} */
 /* {block "footer"} */
-class Block_2084233075629c92d7237d48_10471211 extends Smarty_Internal_Block
+class Block_437811147629e0dab957ba4_29787557 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'footer' => 
   array (
-    0 => 'Block_2084233075629c92d7237d48_10471211',
+    0 => 'Block_437811147629e0dab957ba4_29787557',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
-        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/listUsers">listUsers</a> | 
-        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/userAdd">userAdd</a> | 
-        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/userEdit">userEdit</a> | 
-        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/listBooks">listBooks</a> | 
-        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/bookAdd">bookAdd</a> | 
-        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/listReserved">listReserved</a> | 
-        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/listRented">listRented</a> | 
-        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/"></a> | 
-        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/"></a> | 
-        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/"></a> | 
-        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/"></a> | 
-        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/"></a> | 
-        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/"></a> | 
-        <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_root;?>
-/"></a> | 
+        <i>„Powiedz mi, jakie książki masz w domu, a powiem ci, kim jesteś.”<br/>
+        Jarosław Iwaszkiewicz</i>
     <?php
 }
 }

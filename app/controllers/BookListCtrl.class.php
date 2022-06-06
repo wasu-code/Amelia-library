@@ -150,7 +150,7 @@ class BookListCtrl
         ///
 
         $this->pagingControl();
-        if (sizeof($records2)>$this->recordsLimit) {
+        if (sizeof($records2)>=$this->recordsLimit) {
             $records2 = array_slice($records2,$this->currentPage*$this->recordsLimit,$this->recordsLimit); //array,offset-start,length
         }
         App::getSmarty()->assign("lista", $records2);
@@ -191,11 +191,32 @@ class BookListCtrl
                 Utils::addErrorMessage($e->getMessage());
         }
         
-        $this->pagingControl();
-        if (sizeof($records)>$this->recordsLimit) {
-            $records = array_slice($records,$this->currentPage*$this->recordsLimit,$this->recordsLimit); //array,offset-start,length
+        //create table taking into account only those that match search parameters
+        $this->form->title = $this->v->validateFromPost("sf_title");
+        $this->form->login = $this->v->validateFromPost("sf_login");
+        $records2 = [];
+
+        for ($i=0, $j=0;$i<count($records);$i++) {
+            if (!empty($this->form->title) && str_contains($records[$i]["title"], $this->form->title)) {
+                $records2[$j]=$records[$i];
+                $j++;
+            }else if (!empty($this->form->login) && str_contains($records[$i]["login"], $this->form->login)) {
+                $records2[$j]=$records[$i];
+                $j++;
+            }
         }
-        App::getSmarty()->assign("lista", $records);
+
+        if (empty($this->form->title) && empty($this->form->login)) {
+            $records2 = $records;
+        }
+
+
+        $this->pagingControl();
+        if (sizeof($records2)>=$this->recordsLimit) {
+            $records2 = array_slice($records2,$this->currentPage*$this->recordsLimit,$this->recordsLimit); //array,offset-start,length
+        }
+        App::getSmarty()->assign("lista", $records2);
+        App::getSmarty()->assign("SearchForm", $this->form);
         //App::getSmarty()->display("RentedList.tpl");
 
     }
