@@ -163,7 +163,7 @@ class UsersCtrl
             App::getSmarty()->display("messagebox.tpl");
         } else { //dodano do bazy
             Utils::addInfoMessage("Zmiany zostały zapisane, możesz opuścić tą stronę");
-            SessionUtils::storeMessages();
+            //SessionUtils::storeMessages();
             //App::getRouter()->redirectTo("listUsers");
             App::getSmarty()->display("messagebox.tpl");
         }
@@ -224,7 +224,7 @@ class UsersCtrl
             App::getSmarty()->display("messagebox.tpl");
         } else { //dodaj do bazy
             Utils::addInfoMessage("Dodano nową osobę do bazy");
-            SessionUtils::storeMessages();
+            //SessionUtils::storeMessages();
             //App::getRouter()->redirectTo("homepage");
             App::getSmarty()->display("messagebox.tpl");
         }
@@ -250,7 +250,7 @@ class UsersCtrl
                     App::getDB()->delete("user", ["idUser" => $this->form->id]);
                     //info
                     Utils::addInfoMessage("Usunięcie powiodło się");
-                    SessionUtils::storeMessages();
+                    //SessionUtils::storeMessages();
                     //App::getRouter()->redirectTo("listUsers");//??
                 } 
                     catch (\PDOException $e) {
@@ -259,7 +259,7 @@ class UsersCtrl
                         Utils::addErrorMessage($e->getMessage());
                 }
             } else {
-                SessionUtils::storeMessages();
+                //SessionUtils::storeMessages();
                 //App::getRouter()->redirectTo("listUsers");//??
             }
             $this->listing();

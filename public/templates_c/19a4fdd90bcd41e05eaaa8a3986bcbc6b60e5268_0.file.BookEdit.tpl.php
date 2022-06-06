@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-06-04 18:44:29
+/* Smarty version 4.1.0, created on 2022-06-06 18:17:38
   from 'D:\xampp\htdocs\amelia\app\views\BookEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_629b8bed7d6f98_16952935',
+  'unifunc' => 'content_629e28a21060c8_02400687',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '19a4fdd90bcd41e05eaaa8a3986bcbc6b60e5268' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\BookEdit.tpl',
-      1 => 1654361046,
+      1 => 1654532255,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:messagebox.tpl' => 1,
   ),
 ),false)) {
-function content_629b8bed7d6f98_16952935 (Smarty_Internal_Template $_smarty_tpl) {
+function content_629e28a21060c8_02400687 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_494420519629b8bed7b71b9_56012182', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1045993985629e28a20c81e7_32125067', "content");
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'default.tpl');
 }
 /* {block "content"} */
-class Block_494420519629b8bed7b71b9_56012182 extends Smarty_Internal_Block
+class Block_1045993985629e28a20c81e7_32125067 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_494420519629b8bed7b71b9_56012182',
+    0 => 'Block_1045993985629e28a20c81e7_32125067',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -54,6 +54,8 @@ if (($_smarty_tpl->tpl_vars['action']->value == 'update')) {?>bookEditDB<?php }?
         <div class="flexform">
             <fieldset>
                 <legend>Dane Książki</legend>
+                <input  id="id" type="hidden" placeholder="" name="id" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['form']->value->id ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+">
                 <label for="title">Tytuł</label>
                 <input  id="title" type="text" placeholder="" name="title" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['form']->value->title ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ">

@@ -13,6 +13,7 @@
         <div class="flexform">
             <fieldset>
                 <legend>Dane Książki</legend>
+                <input  id="id" type="hidden" placeholder="" name="id" value="{$form->id|default:''}">
                 <label for="title">Tytuł</label>
                 <input  id="title" type="text" placeholder="" name="title" value="{$form->title|default:''}">
                 <br/>
