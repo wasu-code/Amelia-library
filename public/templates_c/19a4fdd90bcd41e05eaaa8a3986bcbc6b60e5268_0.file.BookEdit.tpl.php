@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.1.0, created on 2022-06-06 18:17:38
+/* Smarty version 4.1.0, created on 2022-06-06 22:00:23
   from 'D:\xampp\htdocs\amelia\app\views\BookEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.1.0',
-  'unifunc' => 'content_629e28a21060c8_02400687',
+  'unifunc' => 'content_629e5cd74201e7_29617566',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '19a4fdd90bcd41e05eaaa8a3986bcbc6b60e5268' => 
     array (
       0 => 'D:\\xampp\\htdocs\\amelia\\app\\views\\BookEdit.tpl',
-      1 => 1654532255,
+      1 => 1654545617,
       2 => 'file',
     ),
   ),
@@ -21,23 +21,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:messagebox.tpl' => 1,
   ),
 ),false)) {
-function content_629e28a21060c8_02400687 (Smarty_Internal_Template $_smarty_tpl) {
+function content_629e5cd74201e7_29617566 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1045993985629e28a20c81e7_32125067', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_978601077629e5cd73f92b0_73713265', "content");
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'default.tpl');
 }
 /* {block "content"} */
-class Block_1045993985629e28a20c81e7_32125067 extends Smarty_Internal_Block
+class Block_978601077629e5cd73f92b0_73713265 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_1045993985629e28a20c81e7_32125067',
+    0 => 'Block_978601077629e5cd73f92b0_73713265',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -69,8 +69,8 @@ if (($_smarty_tpl->tpl_vars['action']->value == 'update')) {?>bookEditDB<?php }?
 ">
                 <br/>
                 <label for="description">Opis</label><br/>
-                <textarea id="description" type="text" placeholder="" name="description" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['form']->value->description ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
-" maxlength="1000" rows="10"></textarea>
+                <textarea id="description" type="text" placeholder="" name="description" maxlength="1000" rows="10"><?php echo (($tmp = $_smarty_tpl->tpl_vars['form']->value->description ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+</textarea>
                 <br/>
                 <label for="quantity">Ilość Egzemplarzy</label>
                 <input id="quantity" type="text" placeholder="" name="quantity" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['form']->value->quantity ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>

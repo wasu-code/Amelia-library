@@ -24,7 +24,7 @@
                 <input id="published" type="date" placeholder="YYYY-MM-DD" name="published" value="{$form->published|default:''}">
                 <br/>
                 <label for="description">Opis</label><br/>
-                <textarea id="description" type="text" placeholder="" name="description" value="{$form->description|default:''}" maxlength="1000" rows="10"></textarea>
+                <textarea id="description" type="text" placeholder="" name="description" maxlength="1000" rows="10">{$form->description|default:''}</textarea>
                 <br/>
                 <label for="quantity">Ilość Egzemplarzy</label>
                 <input id="quantity" type="text" placeholder="" name="quantity" value="{$form->quantity|default:''}">
